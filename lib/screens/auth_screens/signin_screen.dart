@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
+import 'package:instascan/screens/auth_screens/signup_screen.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -85,30 +86,34 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(240,0,0,0),
-                child: Text(
-                    'Forgot Password?',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w900
+                padding: const EdgeInsets.fromLTRB(220,0,0,0),
+                child: InkWell(
+                  child: Text(
+                      'Forgot Password?',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700
+                    ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 80,
               ),
               Text(
                 "Don't have an account?",
                 style: TextStyle(
-                    fontWeight: FontWeight.w900
+                    fontWeight: FontWeight.w600
                 ),
               ),
               TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+                  },
                   child: Text(
                       'Sign Up',
                       style: TextStyle(
                         color: Color(0xFF023A1D),
-                        fontWeight: FontWeight.w900
+                        fontWeight: FontWeight.w700
                       ),
                   ),
               ),

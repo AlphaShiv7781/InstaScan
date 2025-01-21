@@ -11,6 +11,8 @@ class TextformField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: textIcon,
+        filled: true,
+        fillColor: Colors.white,
         contentPadding:
         EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
         border: OutlineInputBorder(
