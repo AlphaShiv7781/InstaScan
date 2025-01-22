@@ -62,7 +62,6 @@ class _SignInScreenState extends State<SignInScreen> {
               //Sign-In Button
               InkWell(
                 onTap: (){
-
                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
