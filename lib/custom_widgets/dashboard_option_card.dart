@@ -7,7 +7,7 @@ class DashBoardOptionCard extends StatelessWidget {
   final String icon;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Ink(
       decoration: BoxDecoration(
         color: Color(0xFF7EC9D4),
         borderRadius: BorderRadius.circular(10),

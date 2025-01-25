@@ -19,9 +19,9 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   Future<void> fetchNews() async {
-    const String apiKey = '4866cff6c3584e10a355a7d061192da7';
+    const String apiKey = '4812467692c24564a77a17a45b026c4d';
     const String url =
-        'https://newsapi.org/v2/top-headlines?country=us&apiKey=$apiKey';
+        'https://newsapi.org/v2/top-headlines?category=health&apiKey=$apiKey';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -41,10 +41,7 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('News'),
-        backgroundColor: const Color(0xFF7EC9D4),
-      ),
+      backgroundColor: Colors.white54,
       body: articles.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(

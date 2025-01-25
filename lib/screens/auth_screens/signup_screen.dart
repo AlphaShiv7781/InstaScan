@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
-import 'package:instascan/screens/dashboard_screens/home_screen.dart';
+import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -133,7 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               //Sign-Up Button
               InkWell(
                 onTap: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MainScreen()));
                 },
                 child: Container(
                   decoration: BoxDecoration(

@@ -2,7 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
 import 'package:instascan/screens/auth_screens/signup_screen.dart';
-import 'package:instascan/screens/dashboard_screens/home_screen.dart';
+import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -62,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
               //Sign-In Button
               InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()),
                   );
                 },
                 child: Container(
