@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/dashboard_option_card.dart';
 import 'package:instascan/custom_widgets/healthy_tipstrick_box.dart';
-
+import 'news_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -110,6 +110,16 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF7EC9D4),
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black54,
+        onTap: (index) {
+          if (index == 1) { // News Button
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NewsScreen(),
+              ),
+            );
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
