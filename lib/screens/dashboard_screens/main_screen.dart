@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instascan/screens/dashboard_screens/history_screen.dart';
 import 'package:instascan/screens/dashboard_screens/home_screen.dart';
 import 'news_screen.dart';
 
@@ -15,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> screens = [
     const HomeScreen(),
     const NewsScreen(),
-    const Center(child: Text("History Screen")), // Placeholder for History
+    const HistoryScreen(), // Placeholder for History
   ];
 
   @override
