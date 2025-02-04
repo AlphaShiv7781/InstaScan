@@ -20,6 +20,16 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  Future<void> signInTask() async {
+
+    final user = await authenticationServices.signIn(emailController.text, passwordController.text);
+    if (user == null) {
+      throw Exception('Sign-in failed. Please check your credentials.');
+    }
+  }
+
+
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -77,14 +87,14 @@ class _SignInScreenState extends State<SignInScreen> {
                    if(formKey.currentState!.validate())
                      {
                        try {
-                         ShowModal.showLoadingModal(context);
-                         final user = await authenticationServices.signIn(
-                             emailController.text, passwordController.text);
-                         if (user != null) {
-                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
-                         }
+                         // Show loading modal while the sign-in process is running
+                          ShowModal.showLoadingModal(context);
+                          await signInTask();
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                        } catch (e) {
-                         print(e);
+                         // Handle error: display SnackBar
+                         ShowModal.dismissLoadingModal(context);
+                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
                        }
                      }
                   },
