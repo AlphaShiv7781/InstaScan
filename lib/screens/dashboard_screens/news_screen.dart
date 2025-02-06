@@ -12,10 +12,11 @@ class NewsScreen extends StatefulWidget {
 class _NewsScreenState extends State<NewsScreen> {
   List articles = [];
 
+
   @override
   void initState() {
     super.initState();
-    fetchNews();
+     fetchNews();
   }
 
   Future<void> fetchNews() async {

@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instascan/constants/validator.dart';
+import 'package:instascan/custom_widgets/show_modal.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
+import 'package:instascan/screens/result_screen/skin_cancer_result_screen.dart';
+import 'package:instascan/services/api_services/skin_cancer_api_service.dart';
 import 'package:intl/intl.dart';
 class SkinCancerAssessmentFormScreen extends StatefulWidget {
   const SkinCancerAssessmentFormScreen({super.key});
@@ -23,6 +26,8 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
   File? _patientImage;
   File? _lesionImage;
   final ImagePicker _picker = ImagePicker();
+
+  SkinCancerApiService skinCancerApiService = SkinCancerApiService();
 
   Future<void> _pickImage(ImageSource source, bool isPatient) async {
     final XFile? pickedFile = await _picker.pickImage(source: source);
@@ -217,14 +222,36 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                 //Submit Button
                 InkWell(
                   onTap: ()async{
-                    if (_formKey.currentState!.validate() && _patientImage != null && _lesionImage != null) {
-                      // Process form data & send to Firebase TFLite model
-                      print("Submitting Form...");
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please fill all fields and select images")),
-                      );
-                    }
+                     try{
+
+                       if (_formKey.currentState!.validate() && _patientImage != null && _lesionImage != null) {
+                         // Process form data & send to Firebase TFLite model
+                         ShowModal.showLoadingModal(context);
+                         String prediction = await SkinCancerApiService.skinCancerApi(_lesionImage!)?? 'Unknown';
+                         print(prediction);
+                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SkinCancerResultScreen(
+                           result: prediction,
+                           patientImage: _patientImage,
+                           skinLesionImage: _lesionImage,
+                           name: _nameController.text,
+                           phoneNumber: _phoneController.text,
+                           email: _emailController.text,
+                           age: _ageController.text,
+                           dob: _dobController.text,
+                           gender: _gender!,
+                         ),),);
+                         print("Submitting Form...");
+                       } else {
+                         ScaffoldMessenger.of(context).showSnackBar(
+                           SnackBar(content: Text("Please fill all fields and select images")),
+                         );
+                       }
+
+                     }
+                     catch (e){
+                       ShowModal.dismissLoadingModal(context);
+                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
+                     }
                   },
                   child: Container(
                     decoration: BoxDecoration(
