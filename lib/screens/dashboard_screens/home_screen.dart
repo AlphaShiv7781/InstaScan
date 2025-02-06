@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/dashboard_option_card.dart';
 import 'package:instascan/custom_widgets/healthy_tipstrick_box.dart';
+import 'package:instascan/screens/skin_cancer_screens/skin_cancer_assessmentform.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
               InkWell(
                 onTap: (){
-
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SkinCancerAssessmentFormScreen()));
                 },
                 splashColor: Colors.cyan,
 
