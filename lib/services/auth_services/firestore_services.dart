@@ -14,4 +14,18 @@ class FirestoreServices{
 
       }
 
+       Future<dynamic> getUserData(String userId) async {
+         DocumentSnapshot doc = await FirebaseFirestore.instance
+             .collection('users')
+             .doc(userId)
+             .get();
+
+         if (doc.exists) {
+           return doc;
+         } else {
+           return "Unable to Load";
+         }
+       }
+
+
 }

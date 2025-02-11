@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/dashboard_option_card.dart';
 import 'package:instascan/custom_widgets/healthy_tipstrick_box.dart';
 import 'package:instascan/screens/skin_cancer_screens/skin_cancer_assessmentform.dart';
+import 'package:instascan/services/database_services/database_services.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -10,6 +12,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchUserData();
+    super.initState();
+  }
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+  Map<String, dynamic>? userData;
+  String _name='';
+
+  DataBaseRetrieval dbs =  DataBaseRetrieval();
+
+  Future<void> fetchUserData() async {
+    User? user = auth.currentUser;
+
+    if (user != null) {
+      String uid = user.uid;
+      userData = await dbs.getUserDataByUID(uid);
+      print(userData);
+      if (userData != null) {
+        setState(() {
+          _name=userData?['name'];
+        });
+      } else {
+        setState(() {
+          _name="Unknown";
+        });
+      }
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Welcome Back!\nJohn Doe",
+               Text(
+                "Welcome Back!\n$_name",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.black, // Explicit text color
                 ),
               ),
+
               const SizedBox(height: 20),
               const Text(
                 "Get your checkups",

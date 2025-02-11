@@ -229,17 +229,20 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                          ShowModal.showLoadingModal(context);
                          String prediction = await SkinCancerApiService.skinCancerApi(_lesionImage!)?? 'Unknown';
                          print(prediction);
-                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SkinCancerResultScreen(
-                           result: prediction,
-                           patientImage: _patientImage,
-                           skinLesionImage: _lesionImage,
-                           name: _nameController.text,
-                           phoneNumber: _phoneController.text,
-                           email: _emailController.text,
-                           age: _ageController.text,
-                           dob: _dobController.text,
-                           gender: _gender!,
-                         ),),);
+                         Navigator.of(context).pushAndRemoveUntil(
+                           MaterialPageRoute(builder: (context) => SkinCancerResultScreen(
+                             result: prediction,
+                             patientImage: _patientImage,
+                             skinLesionImage: _lesionImage,
+                             name: _nameController.text,
+                             phoneNumber: _phoneController.text,
+                             email: _emailController.text,
+                             age: _ageController.text,
+                             dob: _dobController.text,
+                             gender: _gender!,
+                           ),),
+                               (route) => false, // Removes all previous routes
+                         );
                          print("Submitting Form...");
                        } else {
                          ScaffoldMessenger.of(context).showSnackBar(

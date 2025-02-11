@@ -80,6 +80,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
               ),
               FloatingActionButton.extended(
                 backgroundColor: Colors.cyan,
+                heroTag: null,
                 onPressed: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
                 },
@@ -101,6 +102,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                 onPressed: (){
 
                 },
+                heroTag: null,
                 label: Text(
                   'Download Report as PDF',
                   style: TextStyle(

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "791880206926",
+    "firebase_url": "https://instascan-aa2fc-default-rtdb.firebaseio.com",
     "project_id": "instascan-aa2fc",
     "storage_bucket": "instascan-aa2fc.firebasestorage.app"
   },
