@@ -44,6 +44,11 @@ dependencies:
   intl: ^0.18.0
   path: ^1.8.0
   flutter_screenutil: ^5.9.0
+  pdf: ^3.8.1
+  path_provider: ^2.0.11
+  open_file: ^3.2.1
+  url_launcher: ^6.3.1
+
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +78,7 @@ flutter:
      - assets/images/Logo.png
      - assets/images/skincancer.png
      - assets/images/pneumonia.png
+     - assets/fonts/Roboto-Regular.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

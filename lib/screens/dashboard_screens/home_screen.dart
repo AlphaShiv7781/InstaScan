@@ -16,15 +16,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    fetchUserData();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async{
+      if (user != null) {
+        await fetchUserData();
+      }
+    });
     super.initState();
   }
 
+  DataBaseRetrieval dbs =  DataBaseRetrieval();
   FirebaseAuth auth = FirebaseAuth.instance;
   Map<String, dynamic>? userData;
-  String _name='';
-
-  DataBaseRetrieval dbs =  DataBaseRetrieval();
+  String name='';
+  String email='';
+  String mobileNo='';
 
   Future<void> fetchUserData() async {
     User? user = auth.currentUser;
@@ -32,15 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
     if (user != null) {
       String uid = user.uid;
       userData = await dbs.getUserDataByUID(uid);
-      print(userData);
+      print("✅ Data $userData");
       if (userData != null) {
         setState(() {
-          _name=userData?['name'];
+          name=userData?['name'];
+          email=userData?['email'];
+          mobileNo = userData?['phoneNumber'];
         });
       } else {
-        setState(() {
-          _name="Unknown";
-        });
+        print('User data not found');
       }
     }
   }
@@ -58,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                Text(
-                "Welcome Back!\n$_name",
+                "Welcome Back!\n$name",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -112,7 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              const HealthyTipsTrickBox(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,10.0),
+                child: const HealthyTipsTrickBox(),
+              ),
+              SizedBox(height: 20,)
             ],
           ),
         ),

@@ -148,7 +148,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                 ),
 
                 //contact no.
-                TextformField('Phone Number', Icon(Icons.phone) , false, emailValidator ,TextInputType.emailAddress ,_phoneController ),
+                TextformField('Phone Number', Icon(Icons.phone) , false, emailValidator ,TextInputType.phone ,_phoneController ),
 
                 SizedBox(
                   height: 15,
