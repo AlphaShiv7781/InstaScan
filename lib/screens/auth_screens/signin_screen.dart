@@ -130,9 +130,6 @@ class _SignInScreenState extends State<SignInScreen> {
                         fontWeight: FontWeight.w700
                       ),
                     ),
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordScreen()));
-                    },
                   ),
                 ),
                 SizedBox(
