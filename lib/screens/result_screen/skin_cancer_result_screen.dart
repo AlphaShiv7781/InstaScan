@@ -1,15 +1,19 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instascan/custom_widgets/show_modal.dart';
 import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 import 'package:instascan/screens/result_screen/components/patient_detail_component.dart';
 import 'package:instascan/screens/result_screen/components/result_image_widget.dart';
+import 'package:instascan/services/auth_services/firestore_services.dart';
+import 'package:instascan/services/pdf_services/pdf_generator.dart';
+import 'package:instascan/services/pdf_services/pdf_retrieval.dart';
 
 class SkinCancerResultScreen extends StatefulWidget {
    const SkinCancerResultScreen({super.key, required this.result, required this.patientImage, required this.skinLesionImage, required this.name, required this.phoneNumber, required this.email, required this.age, required this.dob, required this.gender});
    final String result;
    final File? patientImage;
    final File? skinLesionImage;
-
    final String name;
    final String phoneNumber;
    final String email;
@@ -22,6 +26,11 @@ class SkinCancerResultScreen extends StatefulWidget {
 }
 
 class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
+
+  PDFService pdfService = new PDFService();
+  FirestoreServices firestoreServices=new FirestoreServices();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,8 +90,28 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
               FloatingActionButton.extended(
                 backgroundColor: Colors.cyan,
                 heroTag: null,
-                onPressed: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
+                onPressed: ()async{
+                  ShowModal.showLoadingModal(context);
+                  String? url = await pdfService.generatePDF(
+
+                      patientName: widget.name,
+                      patientAge: widget.age,
+                      patientGender: widget.gender,
+                      patientEmail: widget.email,
+                      patientMobile: widget.phoneNumber,
+                      confidenceScore: widget.result,
+                      patientImageFile: widget.patientImage!,
+                      reportImageFile: widget.skinLesionImage!
+                  );
+
+                  if (url == null) {
+                    print("PDF generation or upload failed.");
+                    return;
+                  }
+
+                  String userId = FirebaseAuth.instance.currentUser!.uid;
+                  await firestoreServices.savePDFUrl(userId, url);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
                 label: Text(
                   'Go Back to Home',
@@ -99,8 +128,28 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
               ),
               FloatingActionButton.extended(
                 backgroundColor: Colors.redAccent,
-                onPressed: (){
+                onPressed: () async{
+                  ShowModal.showLoadingModal(context);
+                  String? url = await pdfService.generatePDF(
 
+                      patientName: widget.name,
+                      patientAge: widget.age,
+                      patientGender: widget.gender,
+                      patientEmail: widget.email,
+                      patientMobile: widget.phoneNumber,
+                      confidenceScore: widget.result,
+                      patientImageFile: widget.patientImage!,
+                      reportImageFile: widget.skinLesionImage!
+                  );
+
+                  if (url == null) {
+                    print("PDF generation or upload failed.");
+                    return;
+                  }
+                  String userId = FirebaseAuth.instance.currentUser!.uid;
+                  await firestoreServices.savePDFUrl(userId, url);
+                  openPDF(url);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
                 heroTag: null,
                 label: Text(

@@ -16,6 +16,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+             Center(child: Text('UID :- ${FirebaseAuth.instance.currentUser?.uid}')),
             ElevatedButton(
                 onPressed: (){
                   FirebaseAuth.instance.signOut();
