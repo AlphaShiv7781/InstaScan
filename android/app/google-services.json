@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "791880206926",
+    "firebase_url": "https://instascan-aa2fc-default-rtdb.firebaseio.com",
+    "project_id": "instascan-aa2fc",
+    "storage_bucket": "instascan-aa2fc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791880206926:android:da105cfb65b91acad4511f",
+        "android_client_info": {
+          "package_name": "com.example.instascan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjuCJIlakai7ZOKStg09rnnIyruKyy2Ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

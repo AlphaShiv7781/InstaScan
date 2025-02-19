@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instascan/screens/dashboard_screens/history_screen.dart';
 import 'package:instascan/screens/dashboard_screens/home_screen.dart';
+import 'package:instascan/screens/user_profile_screen/user_profile_screen.dart';
 import 'news_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -15,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> screens = [
     const HomeScreen(),
     const NewsScreen(),
-    const Center(child: Text("History Screen")), // Placeholder for History
+    const HistoryScreen(), // Placeholder for History
   ];
 
   @override
@@ -27,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
         leading: IconButton(
           icon: Image.asset('assets/images/User.png'),
           onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfileScreen()));
             // Handle menu action
           },
         ),

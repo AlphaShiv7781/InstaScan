@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/custom_widgets/dashboard_option_card.dart';
 import 'package:instascan/custom_widgets/healthy_tipstrick_box.dart';
+import 'package:instascan/screens/skin_cancer_screens/skin_cancer_assessmentform.dart';
+import 'package:instascan/services/database_services/database_services.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -9,6 +12,46 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async{
+      if (user != null) {
+        await fetchUserData();
+      }
+    });
+    super.initState();
+  }
+
+  DataBaseRetrieval dbs =  DataBaseRetrieval();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  Map<String, dynamic>? userData;
+  String name='';
+  String email='';
+  String mobileNo='';
+
+  Future<void> fetchUserData() async {
+    User? user = auth.currentUser;
+
+    if (user != null) {
+      String uid = user.uid;
+      userData = await dbs.getUserDataByUID(uid);
+      print("✅ Data $userData");
+      if (userData != null) {
+        setState(() {
+          name=userData?['name'];
+          email=userData?['email'];
+          mobileNo = userData?['phoneNumber'];
+        });
+      } else {
+        print('User data not found');
+      }
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,14 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Welcome Back!\nJohn Doe",
+               Text(
+                "Welcome Back!\n$name",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.black, // Explicit text color
                 ),
               ),
+
               const SizedBox(height: 20),
               const Text(
                 "Get your checkups",
@@ -39,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
               InkWell(
                 onTap: (){
-
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SkinCancerAssessmentFormScreen()));
                 },
                 splashColor: Colors.cyan,
 
@@ -73,7 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              const HealthyTipsTrickBox(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,10.0),
+                child: const HealthyTipsTrickBox(),
+              ),
+              SizedBox(height: 20,)
             ],
           ),
         ),
