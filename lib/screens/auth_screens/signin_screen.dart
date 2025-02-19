@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/show_modal.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
+import 'package:instascan/screens/auth_screens/forget_password_screen.dart';
 import 'package:instascan/screens/auth_screens/signup_screen.dart';
 import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 import 'package:instascan/services/auth_services/authentication_services.dart';
