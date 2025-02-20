@@ -110,7 +110,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                   }
 
                   String userId = FirebaseAuth.instance.currentUser!.uid;
-                  await firestoreServices.savePDFUrl(userId, url);
+                  await firestoreServices.savePDFUrl(userId, url , widget.name,widget.email,widget.dob,widget.gender);
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
                 label: Text(
@@ -147,7 +147,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                     return;
                   }
                   String userId = FirebaseAuth.instance.currentUser!.uid;
-                  await firestoreServices.savePDFUrl(userId, url);
+                  await firestoreServices.savePDFUrl(userId, url , widget.name,widget.email,widget.dob,widget.gender);
                   openPDF(url);
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
