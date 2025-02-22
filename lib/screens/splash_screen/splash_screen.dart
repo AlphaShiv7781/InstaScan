@@ -39,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }
       else
         {
+
           WidgetsBinding.instance.addPostFrameCallback((_) {
             precacheImage(AssetImage("assets/images/onboarding_assets/onboarding_1.webp"), context);
             precacheImage(AssetImage("assets/images/onboarding_assets/onboarding_2.webp"), context);
@@ -46,6 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
             precacheImage(AssetImage("assets/images/onboarding_assets/onboarding_4.webp"), context);
             precacheImage(AssetImage("assets/images/onboarding_assets/onboarding_5.webp"), context);
           });
+
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const OnboardingScreen()));
         }
     });

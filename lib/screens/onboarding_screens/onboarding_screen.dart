@@ -18,6 +18,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool isLastPage = false;
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +63,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         ),
       ),
 
-
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),
         child: PageView.builder(
@@ -73,6 +73,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                return Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
+
                     Image.asset(
                       controller.items[index].imageUrl ,
                       gaplessPlayback: true,

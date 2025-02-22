@@ -28,7 +28,6 @@ class OnboardingItems{
         title: 'Your Health, Your Privacy',
         description: 'All scans and reports are securely processed, ensuring your data stays private.',
         imageUrl: 'assets/images/onboarding_assets/onboarding_5.webp'),
-
   ];
 
 }
