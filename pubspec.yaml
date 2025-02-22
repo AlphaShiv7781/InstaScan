@@ -49,6 +49,8 @@ dependencies:
   open_file: ^3.2.1
   url_launcher: ^6.3.1
   flutter_dotenv:
+  smooth_page_indicator: ^1.2.0+3
+  shared_preferences: ^2.5.2
 
 
 dev_dependencies:
@@ -79,6 +81,7 @@ flutter:
      - assets/images/Logo.png
      - assets/images/skincancer.png
      - assets/images/pneumonia.png
+     - assets/images/onboarding_assets/
      - assets/fonts/Roboto-Regular.ttf
      - .env
   #   - images/a_dot_ham.jpeg

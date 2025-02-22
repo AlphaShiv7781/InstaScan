@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/show_modal.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
+import 'package:instascan/screens/auth_screens/signin_screen.dart';
 import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 import 'package:instascan/services/auth_services/authentication_services.dart';
 import 'package:instascan/services/auth_services/firestore_services.dart';
@@ -227,7 +228,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 TextButton(
                   onPressed: (){
-                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignInScreen()));
                   },
                   child: Text(
                     'Sign In',
