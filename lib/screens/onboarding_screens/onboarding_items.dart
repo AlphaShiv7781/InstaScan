@@ -5,35 +5,29 @@ class OnboardingItems{
 
   List<OnboardingInfo> items = [
     OnboardingInfo(
-        title: 'Medical Assistance',
-        description: 'Get Costlier Medical Assistance at your Doorstep',
-        imageUrl: 'assets/images/onboarding_assets/onboarding_2.jpg'),
+        title: 'AI-Powered Health Scanner',
+        description: 'Early detection of skin cancer and pneumonia using AI. Scan images and get instant results.',
+        imageUrl: 'assets/images/onboarding_assets/onboarding_1.webp'),
 
     OnboardingInfo(
-        title: 'Medical Assistance',
-        description: 'Get Costlier Medical Assistance at your Doorstep',
-        imageUrl: 'assets/images/onboarding_assets/onboarding_2.jpg'),
+        title: 'Detect Skin Cancer Instantly',
+        description: 'Upload a skin lesion image, and our AI will assess the risk level with medical-grade accuracy.',
+        imageUrl: 'assets/images/onboarding_assets/onboarding_2.webp'),
 
     OnboardingInfo(
-        title: 'Medical Assistance',
-        description: 'Get Costlier Medical Assistance at your Doorstep',
-        imageUrl: 'assets/images/onboarding_assets/onboarding_2.jpg'),
+        title: 'X-ray Analysis for Pneumonia',
+        description: 'AI-powered diagnosis of pneumonia from chest X-rays to support early intervention.',
+        imageUrl: 'assets/images/onboarding_assets/onboarding_3.webp'),
 
     OnboardingInfo(
-        title: 'Medical Assistance',
-        description: 'Get Costlier Medical Assistance at your Doorstep',
-        imageUrl: 'assets/images/onboarding_assets/onboarding_2.jpg'),
+        title: 'Instant Reports, Anytime',
+        description: 'Download detailed AI-generated reports in PDF format for easy sharing with doctors.',
+        imageUrl: 'assets/images/onboarding_assets/onboarding_4.webp'),
 
     OnboardingInfo(
-        title: 'Medical Assistance',
-        description: 'Get Costlier Medical Assistance at your Doorstep',
-        imageUrl: 'assets/images/onboarding_assets/onboarding_2.jpg'),
-
-    OnboardingInfo(
-        title: 'Medical Assistance',
-        description: 'Get Costlier Medical Assistance at your Doorstep',
-        imageUrl: 'assets/images/onboarding_assets/onboarding_2.jpg'),
-
+        title: 'Your Health, Your Privacy',
+        description: 'All scans and reports are securely processed, ensuring your data stays private.',
+        imageUrl: 'assets/images/onboarding_assets/onboarding_5.webp'),
   ];
 
 }
