@@ -20,43 +20,47 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      bottomSheet: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10 , vertical: 10),
-        child: isLastPage?getStarted(): Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-           children: [
-             TextButton(
-                 onPressed: ()=>pageController.jumpToPage(controller.items.length-1),
-                 child: Text(
-                     'Skip'
-                 ),
-             ),
-
-             SmoothPageIndicator(
-
-                 controller: pageController,
-                 count: controller.items.length,
-                 onDotClicked: (index){
-                   pageController.animateToPage(index, duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-                 },
-                 effect: WormEffect(
-                    dotHeight: 12,
-                    dotWidth: 12,
-                    activeDotColor: Colors.cyan,
-                    dotColor: Colors.grey,
-                 ),
-             ),
-
-             TextButton(
-               onPressed: ()=>pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn),
-               child: Text(
-                   'Next'
+      backgroundColor: Colors.white,
+      bottomSheet: ClipRect(
+        child: Container(
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: isLastPage?getStarted(): Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: [
+               TextButton(
+                   onPressed: ()=>pageController.jumpToPage(controller.items.length-1),
+                   child: Text(
+                       'Skip'
+                   ),
                ),
-             ),
-           ],
+
+               SmoothPageIndicator(
+
+                   controller: pageController,
+                   count: controller.items.length,
+                   onDotClicked: (index){
+                     pageController.animateToPage(index, duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                   },
+                   effect: WormEffect(
+                      dotHeight: 12,
+                      dotWidth: 12,
+                      activeDotColor: Colors.cyan,
+                      dotColor: Colors.grey,
+                   ),
+               ),
+
+               TextButton(
+                 onPressed: ()=>pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn),
+                 child: Text(
+                     'Next'
+                 ),
+               ),
+             ],
+          ),
         ),
       ),
+
 
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),
@@ -70,9 +74,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                  children: [
                     Image.asset(controller.items[index].imageUrl),
                     SizedBox(height: 15,),
-                    Text(controller.items[index].title),
+                    Text(
+                      controller.items[index].title,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     SizedBox(height: 15,),
-                    Text(controller.items[index].description),
+                    Text(
+                      textAlign: TextAlign.center,
+                      controller.items[index].description,
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
                  ],
                );
             },
