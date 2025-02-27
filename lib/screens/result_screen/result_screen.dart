@@ -9,8 +9,9 @@ import 'package:instascan/services/auth_services/firestore_services.dart';
 import 'package:instascan/services/pdf_services/pdf_generator.dart';
 import 'package:instascan/services/pdf_services/pdf_retrieval.dart';
 
-class SkinCancerResultScreen extends StatefulWidget {
-   const SkinCancerResultScreen({super.key, required this.result, required this.patientImage, required this.skinLesionImage, required this.name, required this.phoneNumber, required this.email, required this.age, required this.dob, required this.gender});
+class ResultScreen extends StatefulWidget {
+   const ResultScreen({super.key, required this.result, required this.patientImage, required this.skinLesionImage, required this.name, required this.phoneNumber, required this.email, required this.age, required this.dob, required this.gender, required this.testType});
+   final String testType;
    final String result;
    final File? patientImage;
    final File? skinLesionImage;
@@ -22,13 +23,13 @@ class SkinCancerResultScreen extends StatefulWidget {
    final String gender;
 
   @override
-  State<SkinCancerResultScreen> createState() => _SkinCancerResultScreenState();
+  State<ResultScreen> createState() => _ResultScreenState();
 }
 
-class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
+class _ResultScreenState extends State<ResultScreen> {
 
-  PDFService pdfService = new PDFService();
-  FirestoreServices firestoreServices=new FirestoreServices();
+  PDFService pdfService =  PDFService();
+  FirestoreServices firestoreServices= FirestoreServices();
 
 
   @override
@@ -77,7 +78,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
               ),
               Center(
                   child: Text(
-                      'Confidence Score for Disease :->${widget.result}',
+                      'Confidence Score for ${widget.testType} :->${widget.result}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700
@@ -101,7 +102,8 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                       patientMobile: widget.phoneNumber,
                       confidenceScore: widget.result,
                       patientImageFile: widget.patientImage!,
-                      reportImageFile: widget.skinLesionImage!
+                      reportImageFile: widget.skinLesionImage!,
+                      testType: widget.testType
                   );
 
                   if (url == null) {
@@ -110,7 +112,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                   }
 
                   String userId = FirebaseAuth.instance.currentUser!.uid;
-                  await firestoreServices.savePDFUrl(userId, url , widget.name,widget.email,widget.dob,widget.gender);
+                  await firestoreServices.savePDFUrl(widget.testType , userId, url , widget.name,widget.email,widget.dob,widget.gender);
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
                 label: Text(
@@ -139,7 +141,8 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                       patientMobile: widget.phoneNumber,
                       confidenceScore: widget.result,
                       patientImageFile: widget.patientImage!,
-                      reportImageFile: widget.skinLesionImage!
+                      reportImageFile: widget.skinLesionImage!,
+                      testType: widget.testType
                   );
 
                   if (url == null) {
@@ -147,7 +150,7 @@ class _SkinCancerResultScreenState extends State<SkinCancerResultScreen> {
                     return;
                   }
                   String userId = FirebaseAuth.instance.currentUser!.uid;
-                  await firestoreServices.savePDFUrl(userId, url , widget.name,widget.email,widget.dob,widget.gender);
+                  await firestoreServices.savePDFUrl(widget.testType ,userId, url , widget.name,widget.email,widget.dob,widget.gender);
                   openPDF(url);
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
