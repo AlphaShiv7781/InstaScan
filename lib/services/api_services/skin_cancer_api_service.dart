@@ -5,7 +5,7 @@ import 'package:path/path.dart';
 class SkinCancerApiService{
 
   static Future<String?> skinCancerApi(File skinLesion) async {
-    var url = Uri.parse("https://skin-cancer-model-api.onrender.com/predict");
+    var url = Uri.parse("https://skin-cancer-model-api.onrender.com/predictSkinCancer");
 
     try {
       var request = http.MultipartRequest("POST", url)
