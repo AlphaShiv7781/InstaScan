@@ -5,16 +5,16 @@ import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/show_modal.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
 import 'package:instascan/screens/result_screen/result_screen.dart';
-import 'package:instascan/services/api_services/skin_cancer_api_service.dart';
+import 'package:instascan/services/api_services/pneumonia_api_service.dart';
 import 'package:intl/intl.dart';
-class SkinCancerAssessmentFormScreen extends StatefulWidget {
-  const SkinCancerAssessmentFormScreen({super.key});
+class PneumoniaAssessmentFormScreen extends StatefulWidget {
+  const PneumoniaAssessmentFormScreen({super.key});
 
   @override
-  State<SkinCancerAssessmentFormScreen> createState() => _SkinCancerAssessmentFormScreenState();
+  State<PneumoniaAssessmentFormScreen> createState() => _PneumoniaAssessmentFormScreenState();
 }
 
-class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFormScreen> {
+class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
@@ -24,10 +24,9 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
 
   String? _gender;
   File? _patientImage;
-  File? _lesionImage;
+  File? _chestXrayImage;
   final ImagePicker _picker = ImagePicker();
 
-  SkinCancerApiService skinCancerApiService = SkinCancerApiService();
 
   Future<void> _pickImage(ImageSource source, bool isPatient) async {
     final XFile? pickedFile = await _picker.pickImage(source: source);
@@ -36,7 +35,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
         if (isPatient) {
           _patientImage = File(pickedFile.path);
         } else {
-          _lesionImage = File(pickedFile.path);
+          _chestXrayImage = File(pickedFile.path);
         }
       });
     }
@@ -66,9 +65,9 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Patient Form"),
-          backgroundColor: Color(0xFF7EC9D4),
-          centerTitle: true,
+        title: Text("Patient Form"),
+        backgroundColor: Color(0xFF7EC9D4),
+        centerTitle: true,
       ),
       backgroundColor: Colors.white,
       body: Padding(
@@ -79,7 +78,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
             child: Column(
               children: [
 
-                Text('Skin Cancer Assessment' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w900),),
+                Text('Pneumonia Assessment' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w900),),
 
                 SizedBox(
                   height: 20,
@@ -114,8 +113,8 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                     Column(
                       children: [
                         Text("Lesion Image", style: TextStyle(fontWeight: FontWeight.bold)),
-                        _lesionImage != null
-                            ? Image.file(_lesionImage!, height: 100, width: 100)
+                        _chestXrayImage != null
+                            ? Image.file(_chestXrayImage!, height: 100, width: 100)
                             : Icon(Icons.image, size: 100),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -183,7 +182,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                     ),
                   ),
                   onTap: () => _selectDate(context),
-            ),
+                ),
 
                 SizedBox(
                   height: 15,
@@ -197,7 +196,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                   }).toList(),
                   onChanged: (value) => setState(() => _gender = value),
                   decoration: InputDecoration(
-                      hintText: 'Gender',
+                    hintText: 'Gender',
                     contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                     border: OutlineInputBorder(
@@ -222,39 +221,40 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                 //Submit Button
                 InkWell(
                   onTap: ()async{
-                     try{
+                    try{
 
-                       if (_formKey.currentState!.validate() && _patientImage != null && _lesionImage != null) {
-                         // Process form data & send to Firebase TFLite model
-                         ShowModal.showLoadingModal(context);
-                         String prediction = await SkinCancerApiService.skinCancerApi(_lesionImage!)?? 'Unknown';
-                         print(prediction);
-                         Navigator.of(context).pushAndRemoveUntil(
-                           MaterialPageRoute(builder: (context) => ResultScreen(
-                             result: prediction,
-                             patientImage: _patientImage,
-                             skinLesionImage: _lesionImage,
-                             name: _nameController.text,
-                             phoneNumber: _phoneController.text,
-                             email: _emailController.text,
-                             age: _ageController.text,
-                             dob: _dobController.text,
-                             gender: _gender!, testType: 'Skin Cancer',
-                           ),),
-                               (route) => false, // Removes all previous routes
-                         );
-                         print("Submitting Form...");
-                       } else {
-                         ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(content: Text("Please fill all fields and select images")),
-                         );
-                       }
+                      if (_formKey.currentState!.validate() && _patientImage != null && _chestXrayImage != null) {
+                        // Process form data & send to Firebase TFLite model
+                        ShowModal.showLoadingModal(context);
+                        print(await PneumoniaApiService.pneumoniaApi(_chestXrayImage!));
+                        String prediction = await PneumoniaApiService.pneumoniaApi(_chestXrayImage!)?? 'Unknown';
+                        print(prediction);
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => ResultScreen(
+                            result: prediction,
+                            patientImage: _patientImage,
+                            skinLesionImage: _chestXrayImage,
+                            name: _nameController.text,
+                            phoneNumber: _phoneController.text,
+                            email: _emailController.text,
+                            age: _ageController.text,
+                            dob: _dobController.text,
+                            gender: _gender!, testType: 'PNEUMONIA',
+                          ),),
+                              (route) => false, // Removes all previous routes
+                        );
+                        print("Submitting Form...");
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Please fill all fields and select images")),
+                        );
+                      }
 
-                     }
-                     catch (e){
-                       ShowModal.dismissLoadingModal(context);
-                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
-                     }
+                    }
+                    catch (e){
+                      ShowModal.dismissLoadingModal(context);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(

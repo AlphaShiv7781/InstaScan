@@ -15,7 +15,7 @@ class FirestoreServices{
 
       }
 
-       Future<void> savePDFUrl(String userId, String pdfUrl , String patientName , String email , String dob , String gender) async {
+       Future<void> savePDFUrl(String testType , String userId, String pdfUrl , String patientName , String email , String dob , String gender) async {
          final CollectionReference historyCollection = FirebaseFirestore.instance
              .collection('users')
              .doc(userId)
@@ -23,6 +23,7 @@ class FirestoreServices{
 
          try {
            await historyCollection.add({
+             'testType':testType,
              'url': pdfUrl,// ✅ Store Cloudinary URL
              'patientName':patientName,
              'email':email,

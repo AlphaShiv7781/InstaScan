@@ -49,6 +49,7 @@ class HistoryScreen extends StatelessWidget {
                   .toString()
                   : "No Date";
 
+              String testType = data['testType'] ?? 'No Type';
               String patientName = data['patientName'] ?? 'No Name';
               String gender = data['gender']?? 'No detail';
               String pdfUrl = data['url'];
@@ -73,7 +74,7 @@ class HistoryScreen extends StatelessWidget {
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
                              Text(
-                                 'Skin Cancer Assessment',
+                                 '${testType} Assessment',
                                  style: TextStyle(
                                      fontSize: 18,
                                      fontWeight: FontWeight.bold

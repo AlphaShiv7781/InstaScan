@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 
 class PDFService {
   Future<String?> generatePDF({
+    required String testType,
     required File patientImageFile,
     required File reportImageFile,
     required String patientName,
@@ -29,7 +30,6 @@ class PDFService {
 
     // Load custom font (optional)
     final pw.Font roboto = pw.Font.ttf(await flutter_services.rootBundle.load("assets/fonts/Roboto-Regular.ttf"));
-
     pdf.addPage(
       pw.Page(
         pageFormat: PdfPageFormat.a4,
@@ -50,7 +50,7 @@ class PDFService {
 
                 // Title
                 pw.Text(
-                  "SKIN CANCER ASSESSMENT REPORT",
+                  "$testType ASSESSMENT REPORT",
                   style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold, font: roboto),
                   textAlign: pw.TextAlign.center,
                 ),
