@@ -112,7 +112,7 @@ class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormS
                     //Lesion Image
                     Column(
                       children: [
-                        Text("Lesion Image", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("ChestXray Image", style: TextStyle(fontWeight: FontWeight.bold)),
                         _chestXrayImage != null
                             ? Image.file(_chestXrayImage!, height: 100, width: 100)
                             : Icon(Icons.image, size: 100),
