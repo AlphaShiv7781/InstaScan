@@ -124,6 +124,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(220,0,0,0),
                   child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordScreen()));
+                    },
                     child: Text(
                         'Forgot Password?',
                       style: TextStyle(
