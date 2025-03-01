@@ -141,7 +141,7 @@ class PDFService {
 
     // Save the PDF file to temp directory
     final output = await getTemporaryDirectory();
-    final file = File("${output.path}/skin_cancer_report.pdf");
+    final file = File("${output.path}/${testType}_$patientName.pdf");
     await file.writeAsBytes(await pdf.save());
 
       CloudinaryService cloudinaryService = CloudinaryService();
