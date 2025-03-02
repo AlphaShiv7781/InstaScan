@@ -54,47 +54,45 @@ class HistoryScreen extends StatelessWidget {
               String gender = data['gender']?? 'No detail';
               String pdfUrl = data['url'];
 
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(20,20,20, 0),
-                child: InkWell(
-                  onTap: (){
-                     openPDF(pdfUrl);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      // color: Color(0xFF7EC9D4),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black54),
-                    ),
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children: [
-                         Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Text(
-                                 '${testType} Assessment',
-                                 style: TextStyle(
-                                     fontSize: 18,
-                                     fontWeight: FontWeight.bold
-                                 )
-                             ),
-                             SizedBox(height: 5),
-                             Text(patientName , style: TextStyle(
-                                 fontSize: 12,
-                                 fontWeight: FontWeight.w700
-                             ),
-                             ),
-                             Text(gender),
-                             Text(formattedDate),
-                             Text("Doc ID: $docId", style: TextStyle(fontSize: 12, color: Colors.black54)),
-                           ],
-                         ),
-                         Spacer(),
-                         Image(image: AssetImage('assets/images/skincancer.png'),),
-                       ],
-                    ),
+              return InkWell(
+                onTap: (){
+                   openPDF(pdfUrl);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                  decoration: BoxDecoration(
+                    // color: Color(0xFF7EC9D4),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black54),
+                  ),
+                  padding: EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text(
+                               '${testType} Assessment',
+                               style: TextStyle(
+                                   fontSize: 18,
+                                   fontWeight: FontWeight.bold
+                               )
+                           ),
+                           SizedBox(height: 5),
+                           Text(patientName , style: TextStyle(
+                               fontSize: 12,
+                               fontWeight: FontWeight.w700
+                           ),
+                           ),
+                           Text(gender),
+                           Text(formattedDate),
+                           Text("Doc ID: $docId", style: TextStyle(fontSize: 12, color: Colors.black54)),
+                         ],
+                       ),
+                       Spacer(),
+                       Image(image: AssetImage('assets/images/skincancer.png'),),
+                     ],
                   ),
                 ),
               );

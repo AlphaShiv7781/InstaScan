@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white, // Set background color
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
