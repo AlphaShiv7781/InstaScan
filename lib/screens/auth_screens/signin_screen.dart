@@ -95,7 +95,24 @@ class _SignInScreenState extends State<SignInScreen> {
                        } catch (e) {
                          // Handle error: display SnackBar
                          ShowModal.dismissLoadingModal(context);
-                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
+                         showDialog(context: context, builder: (context)=>AlertDialog(
+                           title: Text('Sign-In Failed'),
+                           content: Text('Sign-in failed. Please check your credentials.'),
+                           actions: [
+                             TextButton(
+
+                               onPressed: (){
+                                 Navigator.pop(context);
+                               },
+                               child: Text(
+                                   'OK',
+                                 style: TextStyle(
+                                   color: Color(0xFF7EC9D4),
+                                 ),
+                               ),
+                             ),
+                           ],
+                         ));
                        }
                      }
                   },

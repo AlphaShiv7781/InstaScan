@@ -139,8 +139,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
             children: [
               Checkbox(
-                checkColor: Colors.black,
-                activeColor: Colors.white,
+                // checkColor: Colors.black,
+                // activeColor: Colors.white,
                 hoverColor: Colors.white,
                 value: isChecked,
                 onChanged: (bool? value) {
@@ -178,7 +178,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }
                         catch(e)
                         {
-                          print(e.toString());
+                          ShowModal.dismissLoadingModal(context);
+                          showDialog(context: context, builder: (context)=>AlertDialog(
+                            title: Text('Sign-Up Failed'),
+                            content: Text('Sign-Up failed. Account already exists with this email.'),
+                            actions: [
+                              TextButton(
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      'OK',
+                                    style: TextStyle(
+                                      color: Color(0xFF7EC9D4),
+                                    ),
+                                  ),
+                              ),
+                            ],
+                          ));
                         }
                       }
                     else
