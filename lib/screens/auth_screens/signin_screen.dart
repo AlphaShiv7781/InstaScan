@@ -35,7 +35,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7EC9D4),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20 ,0 , 20 , 0),
         child: SingleChildScrollView(
@@ -101,7 +101,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF023A1D),
+                      color: Color(0xFF7EC9D4),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     width: double.infinity,
@@ -130,7 +130,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text(
                         'Forgot Password?',
                       style: TextStyle(
-                        fontWeight: FontWeight.w700
+                        fontWeight: FontWeight.w700,
+                         color:  Color(0xFF7EC9D4)
                       ),
                     ),
                   ),
@@ -151,7 +152,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text(
                         'Sign Up',
                         style: TextStyle(
-                          color: Color(0xFF023A1D),
+                          color: Color(0xFF7EC9D4),
                           fontWeight: FontWeight.w700
                         ),
                     ),

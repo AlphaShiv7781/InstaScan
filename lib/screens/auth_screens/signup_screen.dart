@@ -44,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7EC9D4),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20,60,20,0),
@@ -199,7 +199,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF023A1D),
+                      color: Color(0xFF7EC9D4),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     width: double.infinity,
@@ -233,7 +233,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Text(
                     'Sign In',
                     style: TextStyle(
-                        color: Color(0xFF023A1D),
+                        color: Color(0xFF7EC9D4),
                         fontWeight: FontWeight.w700
                     ),
                   ),
