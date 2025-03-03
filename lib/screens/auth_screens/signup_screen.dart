@@ -135,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
                     Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
             children: [
               Checkbox(

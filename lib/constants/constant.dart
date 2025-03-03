@@ -22,3 +22,4 @@ final List<String> tips = [
 ];
 
 const String userCollection = 'users';
+

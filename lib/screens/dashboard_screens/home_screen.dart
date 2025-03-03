@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instascan/constants/userConsts.dart';
 import 'package:instascan/custom_widgets/dashboard_option_card.dart';
 import 'package:instascan/custom_widgets/healthy_tipstrick_box.dart';
 import 'package:instascan/screens/pneumonia_screen/pneumonia_screen.dart';

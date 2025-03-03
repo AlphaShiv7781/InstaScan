@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/show_modal.dart';
@@ -7,6 +8,8 @@ import 'package:instascan/screens/auth_screens/forget_password_screen.dart';
 import 'package:instascan/screens/auth_screens/signup_screen.dart';
 import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 import 'package:instascan/services/auth_services/authentication_services.dart';
+import 'package:instascan/services/database_services/database_services.dart';
+import 'package:instascan/constants/userConsts.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -29,6 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
       throw Exception('Sign-in failed. Please check your credentials.');
     }
   }
+
 
 
   final formKey = GlobalKey<FormState>();
@@ -91,6 +95,7 @@ class _SignInScreenState extends State<SignInScreen> {
                          // Show loading modal while the sign-in process is running
                           ShowModal.showLoadingModal(context);
                           await signInTask();
+
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                        } catch (e) {
                          // Handle error: display SnackBar

@@ -155,7 +155,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                 ),
 
                 //age
-                TextformField('Age', Icon(Icons.account_circle) , false, emailValidator ,TextInputType.emailAddress ,_ageController ),
+                TextformField('Age', Icon(Icons.account_circle) , false, emailValidator ,TextInputType.number,_ageController ),
                 SizedBox(
                   height: 15,
                 ),
