@@ -11,6 +11,7 @@ class _HealthyTipsTrickBoxState extends State<HealthyTipsTrickBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
       height: 250,
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF7EC9D4), width: 2),

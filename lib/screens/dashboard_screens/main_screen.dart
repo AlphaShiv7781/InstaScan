@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instascan/screens/dashboard_screens/history_screen.dart';
 import 'package:instascan/screens/dashboard_screens/home_screen.dart';
+import 'package:instascan/screens/user_profile_screen/user_profile_screen.dart';
 import 'news_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,11 +14,10 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selected = 0;
-
   final List<Widget> screens = [
     const HomeScreen(),
     const NewsScreen(),
-    const Center(child: Text("History Screen")), // Placeholder for History
+    HistoryScreen(userId: FirebaseAuth.instance.currentUser!.uid)
   ];
 
   @override
@@ -27,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
         leading: IconButton(
           icon: Image.asset('assets/images/User.png'),
           onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfileScreen()));
             // Handle menu action
           },
         ),

@@ -20,3 +20,5 @@ final List<String> tips = [
   "Stay socially connected to reduce stress.",
   "Keep a consistent sleep schedule, even on weekends.",
 ];
+
+const String userCollection = 'users';
