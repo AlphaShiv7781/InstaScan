@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/show_modal.dart';
@@ -7,6 +8,8 @@ import 'package:instascan/screens/auth_screens/forget_password_screen.dart';
 import 'package:instascan/screens/auth_screens/signup_screen.dart';
 import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 import 'package:instascan/services/auth_services/authentication_services.dart';
+import 'package:instascan/services/database_services/database_services.dart';
+import 'package:instascan/constants/userConsts.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -31,11 +34,12 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
 
+
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7EC9D4),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20 ,0 , 20 , 0),
         child: SingleChildScrollView(
@@ -91,17 +95,35 @@ class _SignInScreenState extends State<SignInScreen> {
                          // Show loading modal while the sign-in process is running
                           ShowModal.showLoadingModal(context);
                           await signInTask();
+
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                        } catch (e) {
                          // Handle error: display SnackBar
                          ShowModal.dismissLoadingModal(context);
-                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
+                         showDialog(context: context, builder: (context)=>AlertDialog(
+                           title: Text('Sign-In Failed'),
+                           content: Text('Sign-in failed. Please check your credentials.'),
+                           actions: [
+                             TextButton(
+
+                               onPressed: (){
+                                 Navigator.pop(context);
+                               },
+                               child: Text(
+                                   'OK',
+                                 style: TextStyle(
+                                   color: Color(0xFF7EC9D4),
+                                 ),
+                               ),
+                             ),
+                           ],
+                         ));
                        }
                      }
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF023A1D),
+                      color: Color(0xFF7EC9D4),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     width: double.infinity,
@@ -130,7 +152,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text(
                         'Forgot Password?',
                       style: TextStyle(
-                        fontWeight: FontWeight.w700
+                        fontWeight: FontWeight.w700,
+                         color:  Color(0xFF7EC9D4)
                       ),
                     ),
                   ),
@@ -151,7 +174,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text(
                         'Sign Up',
                         style: TextStyle(
-                          color: Color(0xFF023A1D),
+                          color: Color(0xFF7EC9D4),
                           fontWeight: FontWeight.w700
                         ),
                     ),

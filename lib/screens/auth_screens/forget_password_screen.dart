@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
-import 'package:instascan/screens/auth_screens/signin_screen.dart';
+
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({super.key});
@@ -72,9 +72,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Forget Password'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color(0xFF7EC9D4),
         centerTitle: true,
       ),
 
@@ -118,7 +119,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.lightBlueAccent,
+                          backgroundColor: Color(0xFF7EC9D4),
                           padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                           textStyle: TextStyle(
                             fontSize: 20,
