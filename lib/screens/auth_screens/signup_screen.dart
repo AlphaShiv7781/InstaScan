@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instascan/constants/userConsts.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/show_modal.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
@@ -7,6 +8,7 @@ import 'package:instascan/screens/auth_screens/signin_screen.dart';
 import 'package:instascan/screens/dashboard_screens/main_screen.dart';
 import 'package:instascan/services/auth_services/authentication_services.dart';
 import 'package:instascan/services/auth_services/firestore_services.dart';
+import 'package:instascan/services/database_services/database_services.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -174,6 +176,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           if (newUser != null) {
                             await firestoreServices.saveUser(nameController.text , emailController.text , phoneNumberController.text , FirebaseAuth.instance.currentUser!.uid );
                           }
+
+                          DataBaseRetrieval dbs =  DataBaseRetrieval();
+                          String uid = FirebaseAuth.instance.currentUser!.uid;
+                          userData = await dbs.getUserDataByUID(uid);
+
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
                         }
                         catch(e)

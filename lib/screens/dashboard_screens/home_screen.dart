@@ -18,39 +18,48 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    FirebaseAuth.instance.authStateChanges().listen((User? user) async{
-      if (user != null) {
-        await fetchUserData();
-      }
-    });
+    // FirebaseAuth.instance.authStateChanges().listen((User? user) async{
+    //   if (user != null) {
+    //     await fetchUserData();
+    //   }
+    // });
     super.initState();
   }
 
-  DataBaseRetrieval dbs =  DataBaseRetrieval();
-  FirebaseAuth auth = FirebaseAuth.instance;
-  Map<String, dynamic>? userData;
-  String name='';
-  String email='';
-  String mobileNo='';
-
-  Future<void> fetchUserData() async {
-    User? user = auth.currentUser;
-
-    if (user != null) {
-      String uid = user.uid;
-      userData = await dbs.getUserDataByUID(uid);
-      print("✅ Data $userData");
-      if (userData != null) {
-        setState(() {
-          name=userData?['name'];
-          email=userData?['email'];
-          mobileNo = userData?['phoneNumber'];
-        });
-      } else {
-        print('User data not found');
-      }
-    }
-  }
+  // DataBaseRetrieval dbs =  DataBaseRetrieval();
+  // FirebaseAuth auth = FirebaseAuth.instance;
+  // Map<String, dynamic>? userData;
+  // String name='';
+  // String email='';
+  // String mobileNo='';
+  // String? profileUrl;
+  //
+  // Future<void> fetchUserData() async {
+  //   // User? user = auth.currentUser;
+  //
+  //   // if (user != null) {
+  //   //   String uid = user.uid;
+  //   //   userData = await dbs.getUserDataByUID(uid);
+  //     print("✅ Data $userData");
+  //     if (userData != null) {
+  //       setState(() {
+  //         name=userData?['name'];
+  //         email=userData?['email'];
+  //         mobileNo = userData?['phoneNumber'];
+  //         profileUrl = userData?['profileUrl'];
+  //
+  //       });
+  //     } else {
+  //       print('User data not found');
+  //       // setState(() {
+  //       //   name='';
+  //       //   email='';
+  //       //   mobileNo = '';
+  //       //   profileUrl = null;
+  //       // });
+  //     }
+  //   // }
+  // }
 
 
 
@@ -64,14 +73,31 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               Text(
-                "Welcome Back!\n$name",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black, // Explicit text color
-                ),
-              ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                 children: [
+                   Text(
+                     "Welcome Back!\n${userData?['name']??null}",
+                     style: TextStyle(
+                       fontSize: 24,
+                       fontWeight: FontWeight.bold,
+                       color: Colors.black, // Explicit text color
+                     ),
+                   ),
+                    const Spacer(),
+                   CircleAvatar(
+                     radius: 50,
+                     backgroundColor: Colors.grey[300],
+                     backgroundImage: userData?['profileUrl'] != null ? NetworkImage(userData?['profileUrl']) : null,
+                     child: userData?['profileUrl'] == null
+                         ? Text(
+                       userData?['name'][0],
+                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                     )
+                         : null,
+                   ),
+                 ],
+               ),
 
               const SizedBox(height: 20),
               const Text(

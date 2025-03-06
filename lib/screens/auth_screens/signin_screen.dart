@@ -95,7 +95,11 @@ class _SignInScreenState extends State<SignInScreen> {
                          // Show loading modal while the sign-in process is running
                           ShowModal.showLoadingModal(context);
                           await signInTask();
+                          DataBaseRetrieval dbs =  DataBaseRetrieval();
+                          String uid = FirebaseAuth.instance.currentUser!.uid;
+                          userData = await dbs.getUserDataByUID(uid);
 
+                          // Map<String, dynamic>? userData = await dbs.getUserDataByUID(uid);
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                        } catch (e) {
                          // Handle error: display SnackBar

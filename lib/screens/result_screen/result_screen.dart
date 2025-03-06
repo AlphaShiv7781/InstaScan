@@ -151,7 +151,8 @@ class _ResultScreenState extends State<ResultScreen> {
                   }
                   String userId = FirebaseAuth.instance.currentUser!.uid;
                   await firestoreServices.savePDFUrl(widget.testType ,userId, url , widget.name,widget.email,widget.dob,widget.gender);
-                  openPDF(url);
+                  // openPDF(url);
+                  await downloadAndOpenPDF(url);
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 },
                 heroTag: null,
