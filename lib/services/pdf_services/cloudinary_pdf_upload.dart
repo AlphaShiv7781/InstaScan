@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 class CloudinaryService {
   // Upload PDF to Cloudinary
   Future<String?> uploadPDF(File pdfFile) async {
-    final url = Uri.parse("https://api.cloudinary.com/v1_1/${dotenv.env['cloudName']}/upload");
+    final url = Uri.parse("https://api.cloudinary.com/v1_1/${dotenv.env['cloudName']}/raw/upload");
+
 
     // Create a multipart request
     final request = http.MultipartRequest("POST", url)

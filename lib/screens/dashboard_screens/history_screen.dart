@@ -93,7 +93,7 @@ class HistoryScreen extends StatelessWidget {
                          ],
                        ),
                        Spacer(),
-                       Image(image: AssetImage('assets/images/skincancer.png'),),
+                       Image(image: AssetImage((testType=='PNEUMONIA')?'assets/images/pneumonia.png':'assets/images/skincancer.png'),),
                      ],
                   ),
                 ),

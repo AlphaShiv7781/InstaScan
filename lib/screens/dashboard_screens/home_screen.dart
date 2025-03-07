@@ -85,16 +85,29 @@ class _HomeScreenState extends State<HomeScreen> {
                      ),
                    ),
                     const Spacer(),
-                   CircleAvatar(
-                     radius: 50,
-                     backgroundColor: Colors.grey[300],
-                     backgroundImage: userData?['profileUrl'] != null ? NetworkImage(userData?['profileUrl']) : null,
-                     child: userData?['profileUrl'] == null
-                         ? Text(
-                       userData?['name'][0],
-                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                     )
-                         : null,
+                   Material(
+                     shape: CircleBorder(),
+                      shadowColor: Colors.blueGrey,
+                      elevation: 8,
+                     child: Container(
+                       padding: EdgeInsets.all(4), // Thickness of the border
+                       decoration: BoxDecoration(
+                         shape: BoxShape.circle,
+                         border: Border.all(color: Colors.cyan, width: 4), // Outer ring
+                       ),
+
+                       child: CircleAvatar(
+                         radius: 50,
+                         backgroundColor: Colors.grey[300],
+                         backgroundImage: userData?['profileUrl'] != null ? NetworkImage(userData?['profileUrl']) : null,
+                         child: userData?['profileUrl'] == null
+                             ? Text(
+                           userData?['name'][0],
+                           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                         )
+                             : null,
+                       ),
+                     ),
                    ),
                  ],
                ),
@@ -125,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
               InkWell(
                 onTap: (){
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> PneumoniaAssessmentFormScreen()));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=> PneumoniaAssessmentFormScreen()));
                 },
                 splashColor: Colors.cyan,
                 child: DashBoardOptionCard(
