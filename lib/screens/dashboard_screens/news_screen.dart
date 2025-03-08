@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class NewsScreen extends StatefulWidget {
@@ -20,11 +21,9 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   Future<void> fetchNews() async {
-    const String apiKey = '4812467692c24564a77a17a45b026c4d';
-    const String url =
-        'https://newsapi.org/v2/top-headlines?category=health&apiKey=$apiKey';
+     String url =
+        'https://newsapi.org/v2/top-headlines?category=health&apiKey=${dotenv.env['newsAPIKey']}';
 
-    // https://newsapi.org/v2/top-headlines?category=health&apiKey=febbc261860c43dea748a1a0ecde5bb6
 
 
     try {
