@@ -24,8 +24,6 @@ class _NewsScreenState extends State<NewsScreen> {
      String url =
         'https://newsapi.org/v2/top-headlines?category=health&apiKey=${dotenv.env['newsAPIKey']}';
 
-
-
     try {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
