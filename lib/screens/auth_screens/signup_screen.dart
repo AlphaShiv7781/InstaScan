@@ -181,7 +181,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           String uid = FirebaseAuth.instance.currentUser!.uid;
                           userData = await dbs.getUserDataByUID(uid);
 
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
+                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MainScreen()),(route)=>false);
                         }
                         catch(e)
                         {

@@ -100,8 +100,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           String uid = FirebaseAuth.instance.currentUser!.uid;
                           userData = await dbs.getUserDataByUID(uid);
 
-                          // Map<String, dynamic>? userData = await dbs.getUserDataByUID(uid);
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
+                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MainScreen()),(route)=>false);
                        } catch (e) {
                          // Handle error: display SnackBar
                          ShowModal.dismissLoadingModal(context);
