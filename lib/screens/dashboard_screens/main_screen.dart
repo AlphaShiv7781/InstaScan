@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/screens/dashboard_screens/history_screen.dart';
 import 'package:instascan/screens/dashboard_screens/home_screen.dart';
-import 'package:instascan/screens/user_profile_screen/user_profile_screen.dart';
+import 'package:instascan/screens/profile_management_screens/profile_section_screen.dart';
 import 'news_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,22 +17,17 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> screens = [
     const HomeScreen(),
     const NewsScreen(),
-    HistoryScreen(userId: FirebaseAuth.instance.currentUser!.uid)
+    HistoryScreen(userId: FirebaseAuth.instance.currentUser!.uid),
+    ProfileSectionScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF7EC9D4),
         elevation: 0,
-        leading: IconButton(
-          icon: Image.asset('assets/images/User.png'),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfileScreen()));
-            // Handle menu action
-          },
-        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
@@ -42,7 +37,9 @@ class _MainScreenState extends State<MainScreen> {
       ),
       backgroundColor: const Color(0xFFFFFAFA),
       body: screens[_selected],
+
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xFF7EC9D4),
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black54,
@@ -64,6 +61,10 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
             label: 'History',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'Accounts',
           ),
         ],
       ),
