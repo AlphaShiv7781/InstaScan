@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/screens/dashboard_screens/history_screen.dart';
 import 'package:instascan/screens/dashboard_screens/home_screen.dart';
-import 'package:instascan/screens/dashboard_screens/profile_section_screen.dart';
+import 'package:instascan/screens/profile_management_screens/profile_section_screen.dart';
 import 'news_screen.dart';
 
 class MainScreen extends StatefulWidget {
