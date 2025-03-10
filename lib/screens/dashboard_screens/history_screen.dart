@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/services/pdf_services/pdf_retrieval.dart';
+import 'package:path/path.dart';
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key, required this.userId});
   final String userId;
@@ -55,8 +56,9 @@ class HistoryScreen extends StatelessWidget {
               String pdfUrl = data['url'];
 
               return InkWell(
-                onTap: (){
-                   openPDF(pdfUrl);
+                onTap: ()async{
+                   // openPDF(pdfUrl);
+                   await downloadAndOpenPDF(pdfUrl);
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
@@ -91,7 +93,7 @@ class HistoryScreen extends StatelessWidget {
                          ],
                        ),
                        Spacer(),
-                       Image(image: AssetImage('assets/images/skincancer.png'),),
+                       Image(image: AssetImage((testType=='PNEUMONIA')?'assets/images/pneumonia.png':'assets/images/skincancer.png'),),
                      ],
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/constants/validator.dart';
@@ -95,8 +96,11 @@ class _SignInScreenState extends State<SignInScreen> {
                          // Show loading modal while the sign-in process is running
                           ShowModal.showLoadingModal(context);
                           await signInTask();
+                          DataBaseRetrieval dbs =  DataBaseRetrieval();
+                          String uid = FirebaseAuth.instance.currentUser!.uid;
+                          userData = await dbs.getUserDataByUID(uid);
 
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
+                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MainScreen()),(route)=>false);
                        } catch (e) {
                          // Handle error: display SnackBar
                          ShowModal.dismissLoadingModal(context);
@@ -123,7 +127,16 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF7EC9D4),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.redAccent,
+                          // Color(0xFF7EC9D4),
+                          Colors.blueGrey,
+                        ],
+                      ),
+                      // color: Color(0xFF7EC9D4),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     width: double.infinity,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class NewsScreen extends StatefulWidget {
@@ -20,9 +21,8 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   Future<void> fetchNews() async {
-    const String apiKey = '4812467692c24564a77a17a45b026c4d';
-    const String url =
-        'https://newsapi.org/v2/top-headlines?category=health&apiKey=$apiKey';
+     String url =
+        'https://newsapi.org/v2/top-headlines?category=health&apiKey=${dotenv.env['newsAPIKey']}';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -55,21 +55,29 @@ class _NewsScreenState extends State<NewsScreen> {
             margin: const EdgeInsets.all(10),
             child: ListTile(
               leading: article['urlToImage'] != null
-                  ? Image.network(
-                article['urlToImage'],
-                width: 60,
-                fit: BoxFit.cover,
-              )
+                  ? SizedBox(
+                height: 200,
+                width: 150,
+                    child: Image.network(
+                       article['urlToImage'],
+                       fit: BoxFit.fitHeight,
+                      ),
+                  )
                   : const Icon(Icons.image_not_supported),
               title: Text(article['title'] ?? 'No title'),
-              subtitle: Text(article['description'] ?? 'No description'),
+              // subtitle: Text(article['description'] ?? 'No description'),
               onTap: () {
 
                 showDialog(
+                  barrierColor: Colors.black.withOpacity(0.5),
                   context: context,
                   builder: (context) => AlertDialog(
                     contentPadding: EdgeInsets.zero,
                     content: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       width: double.maxFinite,
                       constraints: BoxConstraints(
                         maxHeight: MediaQuery.of(context).size.height * 0.8, // Constrains height
@@ -111,15 +119,42 @@ class _NewsScreenState extends State<NewsScreen> {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
+                                    article['author'] ?? 'No source',
+                                    style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
                                     article['description'] ?? 'No description available',
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    article['content'] ?? 'No content available',
-                                    style: const TextStyle(fontSize: 14),
+                                    article['publishedAt'] ?? 'No source',
+                                    style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold
+                                    ),
                                   ),
-
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: const Text(
+                                            'Close',
+                                          style: TextStyle(
+                                            color: Colors.cyan,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -127,12 +162,6 @@ class _NewsScreenState extends State<NewsScreen> {
                         ),
                       ),
                     ),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text('Close'),
-                      ),
-                    ],
                   ),
                 );
                 
