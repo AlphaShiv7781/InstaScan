@@ -127,7 +127,16 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF7EC9D4),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.redAccent,
+                          // Color(0xFF7EC9D4),
+                          Colors.blueGrey,
+                        ],
+                      ),
+                      // color: Color(0xFF7EC9D4),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     width: double.infinity,

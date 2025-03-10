@@ -149,7 +149,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                         child: const Text(
                                             'Close',
                                           style: TextStyle(
-                                            color: Color(0xFF7EC9D4),
+                                            color: Colors.cyan,
                                           ),
                                         ),
                                       ),
