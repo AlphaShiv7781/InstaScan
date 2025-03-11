@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/services/pdf_services/pdf_retrieval.dart';
-import 'package:path/path.dart';
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key, required this.userId});
   final String userId;
@@ -55,46 +54,51 @@ class HistoryScreen extends StatelessWidget {
               String gender = data['gender']?? 'No detail';
               String pdfUrl = data['url'];
 
-              return InkWell(
-                onTap: ()async{
-                   // openPDF(pdfUrl);
-                   await downloadAndOpenPDF(pdfUrl);
-                },
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-                  decoration: BoxDecoration(
-                    // color: Color(0xFF7EC9D4),
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black54),
-                  ),
-                  padding: EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: [
-                       Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           Text(
-                               '${testType} Assessment',
-                               style: TextStyle(
-                                   fontSize: 18,
-                                   fontWeight: FontWeight.bold
-                               )
-                           ),
-                           SizedBox(height: 5),
-                           Text(patientName , style: TextStyle(
-                               fontSize: 12,
-                               fontWeight: FontWeight.w700
-                           ),
-                           ),
-                           Text(gender),
-                           Text(formattedDate),
-                           Text("Doc ID: $docId", style: TextStyle(fontSize: 12, color: Colors.black54)),
-                         ],
-                       ),
-                       Spacer(),
-                       Image(image: AssetImage((testType=='PNEUMONIA')?'assets/images/pneumonia.png':'assets/images/skincancer.png'),),
-                     ],
+              return Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: InkWell(
+                  onTap: ()async{
+                     // openPDF(pdfUrl);
+                     await downloadAndOpenPDF(pdfUrl);
+                  },
+                  splashColor: Colors.cyan.withOpacity(0.4), // Adjust splash opacity
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 0,horizontal: 0),
+                    decoration: BoxDecoration(
+                      // color: Color(0xFF7EC9D4),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.black54),
+                    ),
+                    padding: EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       children: [
+                         Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             Text(
+                                 '${testType} Assessment',
+                                 style: TextStyle(
+                                     fontSize: 18,
+                                     fontWeight: FontWeight.bold
+                                 )
+                             ),
+                             SizedBox(height: 5),
+                             Text(patientName , style: TextStyle(
+                                 fontSize: 12,
+                                 fontWeight: FontWeight.w700
+                             ),
+                             ),
+                             Text(gender),
+                             Text(formattedDate),
+                             Text("Doc ID: $docId", style: TextStyle(fontSize: 12, color: Colors.black54)),
+                           ],
+                         ),
+                         Spacer(),
+                         Image(image: AssetImage((testType=='PNEUMONIA')?'assets/images/pneumonia.png':'assets/images/skincancer.png'),),
+                       ],
+                    ),
                   ),
                 ),
               );
