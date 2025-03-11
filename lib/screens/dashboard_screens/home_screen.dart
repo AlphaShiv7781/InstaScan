@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instascan/constants/userConsts.dart';
 import 'package:instascan/custom_widgets/dashboard_option_card.dart';
 import 'package:instascan/custom_widgets/healthy_tipstrick_box.dart';
 import 'package:instascan/screens/pneumonia_screen/pneumonia_screen.dart';
 import 'package:instascan/screens/skin_cancer_screens/skin_cancer_assessmentform.dart';
-import 'package:instascan/services/database_services/database_services.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -18,48 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    // FirebaseAuth.instance.authStateChanges().listen((User? user) async{
-    //   if (user != null) {
-    //     await fetchUserData();
-    //   }
-    // });
     super.initState();
   }
-
-  // DataBaseRetrieval dbs =  DataBaseRetrieval();
-  // FirebaseAuth auth = FirebaseAuth.instance;
-  // Map<String, dynamic>? userData;
-  // String name='';
-  // String email='';
-  // String mobileNo='';
-  // String? profileUrl;
-  //
-  // Future<void> fetchUserData() async {
-  //   // User? user = auth.currentUser;
-  //
-  //   // if (user != null) {
-  //   //   String uid = user.uid;
-  //   //   userData = await dbs.getUserDataByUID(uid);
-  //     print("✅ Data $userData");
-  //     if (userData != null) {
-  //       setState(() {
-  //         name=userData?['name'];
-  //         email=userData?['email'];
-  //         mobileNo = userData?['phoneNumber'];
-  //         profileUrl = userData?['profileUrl'];
-  //
-  //       });
-  //     } else {
-  //       print('User data not found');
-  //       // setState(() {
-  //       //   name='';
-  //       //   email='';
-  //       //   mobileNo = '';
-  //       //   profileUrl = null;
-  //       // });
-  //     }
-  //   // }
-  // }
 
 
 
