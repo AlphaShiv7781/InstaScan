@@ -74,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 15,
-                          fontFamily: 'Aldrich'
+                          fontFamily: 'Roboto'
                       ),
                   ),
                 ),
@@ -92,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
-                        fontFamily: 'Aldrich'
+                        fontFamily: 'Roboto'
                     ),
                   ),
                 ),
@@ -110,7 +110,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
-                        fontFamily: 'Aldrich'
+                        fontFamily: 'Roboto'
                     ),
                   ),
                 ),
@@ -128,7 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
-                        fontFamily: 'Aldrich'
+                        fontFamily: 'Roboto'
                     ),
                   ),
                 ),
@@ -255,13 +255,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
                 SizedBox(
-                  height: 80,
+                  height: 40,
                 ),
                 Text(
                   "Already have an account?",
                   style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontFamily: 'Aldrich'
+                      fontFamily: 'Aldrich',
+                    fontSize: 12
                   ),
                 ),
                 TextButton(
@@ -273,7 +274,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                         color: Color(0xFF7EC9D4),
                         fontWeight: FontWeight.w700,
-                        fontFamily: 'Aldrich'
+                        fontFamily: 'Aldrich',
+                      fontSize: 12
                     ),
                   ),
                 ),

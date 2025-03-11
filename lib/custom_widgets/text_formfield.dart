@@ -17,7 +17,7 @@ class TextformField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          fontFamily: 'Aldrich',
+          fontFamily: 'Roboto',
               color: Colors.grey
         ),
         prefixIcon: textIcon,

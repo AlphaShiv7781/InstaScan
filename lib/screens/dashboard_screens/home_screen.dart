@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                        fontSize: 24,
                        fontWeight: FontWeight.bold,
                        color: Colors.black, // Explicit text color
+                       fontFamily: 'Aldrich', // Set font family
                      ),
                    ),
                     const Spacer(),
@@ -74,9 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const Text(
                 "Get your checkups",
                 style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                   color: Colors.black,
+                  fontFamily: 'Dongle',
                 ),
               ),
               const SizedBox(height: 10),
@@ -110,9 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const Text(
                 "Healthy Tips & Tricks",
                 style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                   color: Colors.black,
+                  fontFamily: 'Dongle'
                 ),
               ),
               const SizedBox(height: 10),

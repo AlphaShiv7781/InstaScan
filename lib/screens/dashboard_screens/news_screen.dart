@@ -64,7 +64,12 @@ class _NewsScreenState extends State<NewsScreen> {
                       ),
                   )
                   : const Icon(Icons.image_not_supported),
-              title: Text(article['title'] ?? 'No title'),
+              title: Text(article['title'] ?? 'No title',
+                style: TextStyle(
+                    fontFamily: 'Roboto',
+                  fontSize: 16
+                ),
+              ),
               // subtitle: Text(article['description'] ?? 'No description'),
               onTap: () {
 
@@ -106,6 +111,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
+                                      fontFamily: 'Aldrich',
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -114,7 +120,8 @@ class _NewsScreenState extends State<NewsScreen> {
                                     style: const TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey,
-                                        fontWeight: FontWeight.bold
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Aldrich'
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -123,21 +130,23 @@ class _NewsScreenState extends State<NewsScreen> {
                                     style: const TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey,
-                                        fontWeight: FontWeight.bold
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Aldrich'
                                     ),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     article['description'] ?? 'No description available',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: const TextStyle(fontSize: 16, fontFamily: 'Roboto'),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     article['publishedAt'] ?? 'No source',
                                     style: const TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 18,
                                         color: Colors.grey,
-                                        fontWeight: FontWeight.bold
+                                        fontWeight: FontWeight.bold,
+                                      fontFamily: 'Dongle'
                                     ),
                                   ),
                                   const SizedBox(height: 8),

@@ -11,7 +11,14 @@ class HistoryScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.fromLTRB(10.0 , 20,10,0),
-          child: Text('History of Assessments'),
+          child: Text(
+              'History of Assessments',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                fontFamily: 'Aldrich'
+              )
+          ),
         ),
       ),
       body: StreamBuilder(
@@ -81,13 +88,15 @@ class HistoryScreen extends StatelessWidget {
                                  '${testType} Assessment',
                                  style: TextStyle(
                                      fontSize: 18,
-                                     fontWeight: FontWeight.bold
+                                     fontWeight: FontWeight.bold,
+                                   fontFamily: 'Aldrich'
                                  )
                              ),
                              SizedBox(height: 5),
                              Text(patientName , style: TextStyle(
                                  fontSize: 12,
-                                 fontWeight: FontWeight.w700
+                                 fontWeight: FontWeight.w700,
+                                 fontFamily: 'Roboto'
                              ),
                              ),
                              Text(gender),

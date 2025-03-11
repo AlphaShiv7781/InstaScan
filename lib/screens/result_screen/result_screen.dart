@@ -35,17 +35,18 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey.shade200,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20,40,20,0),
         child: SingleChildScrollView(
           child: Column(
-          
+
             children: [
               Align(
                   alignment: Alignment.topRight,
                   child: Image.asset('assets/images/Logo2.png', height: 50, width: 200,),
               ),
-          
+
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                 child: Row(
@@ -86,7 +87,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   ),
               ),
               SizedBox(
-                height: 80,
+                height: 40,
               ),
               FloatingActionButton.extended(
                 backgroundColor: Colors.cyan,

@@ -85,8 +85,6 @@ flutter:
      - assets/images/skincancer.png
      - assets/images/pneumonia.png
      - assets/images/onboarding_assets/
-     - assets/fonts/Roboto-Regular.ttf
-     - assets/fonts/Aldrich-Regular.ttf
      - .env
   #   - images/a_dot_ham.jpeg
 
@@ -107,9 +105,13 @@ flutter:
         - asset: assets/fonts/Aldrich-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-     - family: Robot
+     - family: Roboto
        fonts:
          - asset: assets/fonts/Roboto-Regular.ttf
+
+     - family: Dongle
+       fonts:
+         - asset: assets/fonts/Dongle-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

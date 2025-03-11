@@ -102,8 +102,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       controller.items[index].description,
                       style: TextStyle(
                         fontSize: 16,
-                          fontFamily: 'Aldrich',
-                        color: Colors.grey
+                          fontFamily: 'Roboto',
+                        color: Colors.black54
                       ),
                     ),
                  ],

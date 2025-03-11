@@ -66,7 +66,11 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Patient Form"),
+          title: Text("Patient Form",
+            style: TextStyle(
+              fontFamily: 'Aldrich',
+            ),
+          ),
           backgroundColor: Color(0xFF7EC9D4),
           centerTitle: true,
       ),
@@ -79,7 +83,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
             child: Column(
               children: [
 
-                Text('Skin Cancer Assessment' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w900),),
+                Text('Skin Cancer Assessment' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w900,fontFamily: 'Aldrich'),),
 
                 SizedBox(
                   height: 20,
@@ -93,7 +97,7 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                     //Patient Image
                     Column(
                       children: [
-                        Text("Patient Image", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("Patient Image", style: TextStyle(fontWeight: FontWeight.bold,)),
                         _patientImage != null
                             ? Image.file(_patientImage!, height: 100, width: 100)
                             : Icon(Icons.image, size: 100),
@@ -269,7 +273,8 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.w500
+                            fontWeight: FontWeight.w500,
+                          fontFamily: 'Aldrich'
                         ),
                       ),
                     ),

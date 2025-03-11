@@ -168,7 +168,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                          color:  Color(0xFF7EC9D4),
-                          fontFamily: 'Aldrich'
+                          fontFamily: 'Aldrich',
+                        fontSize: 12
                       ),
                     ),
                   ),
@@ -180,7 +181,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   "Don't have an account?",
                   style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontFamily: 'Aldrich'
+                      fontFamily: 'Aldrich',
+                    fontSize: 12
                   ),
                 ),
                 TextButton(
@@ -192,7 +194,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                           color: Color(0xFF7EC9D4),
                           fontWeight: FontWeight.w700,
-                            fontFamily: 'Aldrich'
+                            fontFamily: 'Aldrich',
+                          fontSize: 12
                         ),
                     ),
                 ),

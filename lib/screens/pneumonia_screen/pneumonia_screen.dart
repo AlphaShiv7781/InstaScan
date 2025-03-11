@@ -65,7 +65,12 @@ class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormS
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Patient Form"),
+        title: Text(
+            "Patient Form",
+          style: TextStyle(
+              fontFamily: 'Aldrich'
+          ),
+        ),
         backgroundColor: Color(0xFF7EC9D4),
         centerTitle: true,
       ),
@@ -78,7 +83,7 @@ class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormS
             child: Column(
               children: [
 
-                Text('Pneumonia Assessment' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w900),),
+                Text('Pneumonia Assessment' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w900,fontFamily: 'Aldrich'),),
 
                 SizedBox(
                   height: 20,
@@ -269,7 +274,8 @@ class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormS
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.w500
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Aldrich'
                         ),
                       ),
                     ),
