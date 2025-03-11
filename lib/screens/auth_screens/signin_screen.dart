@@ -41,6 +41,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20 ,0 , 20 , 0),
         child: SingleChildScrollView(
@@ -60,7 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ],
                 ),
-            
+
                 Text(
                     'Please sign in to continue ',
                   style: TextStyle(
@@ -68,27 +69,28 @@ class _SignInScreenState extends State<SignInScreen> {
                       fontWeight: FontWeight.w600
                   ),
                 ),
-            
+
                 SizedBox(
                   height: 80,
                 ),
-            
+
                 //E-mail TextField
                 TextformField('Email Address', Icon(Icons.email_outlined) , false, emailValidator ,TextInputType.emailAddress ,emailController ),
-            
+
                 SizedBox(
                   height: 30,
                 ),
-            
+
                 //Password TextField
                 TextformField('Password', Icon(Icons.lock_outline) , true , passwordValidator , TextInputType.visiblePassword , passwordController),
-            
+
                 SizedBox(
                   height: 30,
                 ),
-            
+
                 //Sign-In Button
                 InkWell(
+                  splashColor: Colors.cyan,
                   onTap: ()async{
                    if(formKey.currentState!.validate())
                      {
@@ -125,29 +127,25 @@ class _SignInScreenState extends State<SignInScreen> {
                        }
                      }
                   },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.redAccent,
-                          // Color(0xFF7EC9D4),
-                          Colors.blueGrey,
-                        ],
+                  child: Material(
+                    elevation: 5,
+                    shadowColor: Colors.blueGrey,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFF7EC9D4),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      // color: Color(0xFF7EC9D4),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    width: double.infinity,
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: Center(
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(
-                           color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500
+                      width: double.infinity,
+                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      child: Center(
+                        child: Text(
+                          'Sign In',
+                          style: TextStyle(
+                             color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500
+                          ),
                         ),
                       ),
                     ),

@@ -167,6 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 //Sign-Up Button
                 InkWell(
+                  splashColor: Colors.cyan,
                   onTap: ()async{
                     if(formKey.currentState!.validate() && isChecked==true)
                       {
@@ -221,20 +222,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
                       }
                   },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFF7EC9D4),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    width: double.infinity,
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: Center(
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFF7EC9D4),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      width: double.infinity,
+                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      child: Center(
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500
+                          ),
                         ),
                       ),
                     ),
