@@ -16,6 +16,7 @@ class _HealthyTipsTrickBoxState extends State<HealthyTipsTrickBox> {
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF7EC9D4), width: 2),
         borderRadius: BorderRadius.circular(8),
+        color: Colors.white
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
