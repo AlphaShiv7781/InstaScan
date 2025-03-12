@@ -1,16 +1,10 @@
-# instascan
+📌 InstaScan – AI-Powered Medical Imaging for Disease Detection
+InstaScan is an AI-powered medical imaging application designed for skin cancer and pneumonia detection. It leverages deep learning models trained on HAM10000 and RSNA Pneumonia datasets to provide accurate disease predictions.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🚀 Features
+✅ Skin Cancer Detection – Classifies skin lesions using EfficientNetB7 trained on the HAM10000 dataset.
+✅ Pneumonia Detection – Analyzes chest X-rays with EfficientNetB7 trained on the RSNA dataset.
+✅ FastAPI Backend – Serves AI models via two REST APIs, deployed on Render for real-time inference.
+✅ Flutter App – Provides an intuitive and responsive UI for image upload and result visualization.
+✅ Model Performance – Achieves 92.5% accuracy (F1-score: 0.91) for skin cancer and 94.2% accuracy (F1-score: 0.93) for pneumonia detection.
+✅ TensorFlow Lite (TFLite) Support – Optimized for mobile inference to ensure fast and lightweight predictions.
