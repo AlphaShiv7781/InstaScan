@@ -230,7 +230,9 @@ class _SkinCancerAssessmentFormScreenState extends State<SkinCancerAssessmentFor
 
                        if (_formKey.currentState!.validate() && _patientImage != null && _lesionImage != null) {
                          // Process form data & send to Firebase TFLite model
-                         ShowModal.showLoadingModal(context);
+                         // ShowModal.showLoadingModal(context);
+                         ShowModal showLoadingModal = ShowModal(title: 'Please wait...');
+                         showLoadingModal.showLoadingModal(context);
                          String prediction = await SkinCancerApiService.skinCancerApi(_lesionImage!)?? 'Unknown';
                          print(prediction);
                          Navigator.of(context).pushAndRemoveUntil(

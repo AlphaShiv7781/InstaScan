@@ -98,7 +98,8 @@ class _SignInScreenState extends State<SignInScreen> {
                      {
                        try {
                          // Show loading modal while the sign-in process is running
-                          ShowModal.showLoadingModal(context);
+                          ShowModal showLoadingModal = ShowModal(title: 'Signing in...');
+                          showLoadingModal.showLoadingModal(context);
                           await signInTask();
                           DataBaseRetrieval dbs =  DataBaseRetrieval();
                           String uid = FirebaseAuth.instance.currentUser!.uid;

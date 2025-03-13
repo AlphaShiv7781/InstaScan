@@ -178,7 +178,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if(formKey.currentState!.validate() && isChecked==true)
                       {
                         try{
-                          ShowModal.showLoadingModal(context);
+                          // ShowModal.showLoadingModal(context);
+                          ShowModal showLoadingModal = ShowModal(title: 'Signing up , Please wait...');
+                          showLoadingModal.showLoadingModal(context);
                           final newUser = await authenticationServices.signUp(emailController.text, passwordController.text);
                           if (newUser != null) {
                             await firestoreServices.saveUser(nameController.text , emailController.text , phoneNumberController.text , FirebaseAuth.instance.currentUser!.uid );

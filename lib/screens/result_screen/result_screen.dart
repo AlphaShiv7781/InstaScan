@@ -93,7 +93,9 @@ class _ResultScreenState extends State<ResultScreen> {
                 backgroundColor: Colors.cyan,
                 heroTag: null,
                 onPressed: ()async{
-                  ShowModal.showLoadingModal(context);
+                  // ShowModal.showLoadingModal(context);
+                  ShowModal showLoadingModal = ShowModal(title: 'Please wait...');
+                  showLoadingModal.showLoadingModal(context);
                   String? url = await pdfService.generatePDF(
 
                       patientName: widget.name,
@@ -132,7 +134,9 @@ class _ResultScreenState extends State<ResultScreen> {
               FloatingActionButton.extended(
                 backgroundColor: Colors.redAccent,
                 onPressed: () async{
-                  ShowModal.showLoadingModal(context);
+                  // ShowModal.showLoadingModal(context);
+                  ShowModal showLoadingModal = ShowModal(title: 'Please wait...');
+                  showLoadingModal.showLoadingModal(context);
                   String? url = await pdfService.generatePDF(
 
                       patientName: widget.name,

@@ -230,7 +230,9 @@ class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormS
 
                       if (_formKey.currentState!.validate() && _patientImage != null && _chestXrayImage != null) {
                         // Process form data & send to Firebase TFLite model
-                        ShowModal.showLoadingModal(context);
+                        // ShowModal.showLoadingModal(context);
+                        ShowModal showLoadingModal = ShowModal(title: 'Please wait...');
+                        showLoadingModal.showLoadingModal(context);
                         print(await PneumoniaApiService.pneumoniaApi(_chestXrayImage!));
                         String prediction = await PneumoniaApiService.pneumoniaApi(_chestXrayImage!)?? 'Unknown';
                         print(prediction);
