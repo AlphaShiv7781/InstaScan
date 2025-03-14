@@ -33,7 +33,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                TextButton(
                    onPressed: ()=>pageController.jumpToPage(controller.items.length-1),
                    child: Text(
-                       'Skip'
+                       'Skip',
+                     style: TextStyle(
+                       fontFamily: 'Aldrich',
+                       color: Colors.cyan
+                     ),
                    ),
                ),
 
@@ -55,7 +59,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                TextButton(
                  onPressed: ()=>pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn),
                  child: Text(
-                     'Next'
+                     'Next',
+                   style: TextStyle(
+                       fontFamily: 'Aldrich',
+                       color: Colors.cyan
+                   ),
                  ),
                ),
              ],
@@ -85,6 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Aldrich'
                       ),
                     ),
                     SizedBox(height: 15,),
@@ -93,6 +102,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       controller.items[index].description,
                       style: TextStyle(
                         fontSize: 16,
+                          fontFamily: 'Roboto',
+                        color: Colors.black54
                       ),
                     ),
                  ],
@@ -128,6 +139,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
+                    fontFamily: 'Aldrich'
                 ),
             ),
         ),

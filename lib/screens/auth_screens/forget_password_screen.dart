@@ -74,7 +74,12 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Forget Password'),
+        title: Text(
+            'Forget Password',
+            style: TextStyle(
+              fontFamily: 'Aldrich',
+            ),
+        ),
         backgroundColor: Color(0xFF7EC9D4),
         centerTitle: true,
       ),
@@ -95,6 +100,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Aldrich',
                      ),
                  ),
                   SizedBox(
@@ -121,6 +127,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF7EC9D4),
                           padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           textStyle: TextStyle(
                             fontSize: 20,
 
@@ -130,6 +139,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                             'Change Password',
                              style: TextStyle(
                                color: Colors.white,
+                               fontFamily: 'Aldrich',
                              ),
                         ),
                   ),

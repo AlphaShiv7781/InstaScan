@@ -16,6 +16,10 @@ class TextformField extends StatelessWidget {
       controller: textEditingController,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(
+          fontFamily: 'Roboto',
+              color: Colors.grey
+        ),
         prefixIcon: textIcon,
         filled: true,
         fillColor: Colors.white,

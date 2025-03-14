@@ -40,8 +40,8 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
 
+      backgroundColor: Colors.cyan.shade50,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20 ,0 , 20 , 0),
         child: SingleChildScrollView(
@@ -56,7 +56,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           'Welcome Back!',
                         textStyle: TextStyle(
                             fontSize: 32,
-                            fontWeight: FontWeight.w700
+                            fontWeight: FontWeight.w700,
+                          fontFamily: 'Aldrich'
                         ),
                       ),
                     ],
@@ -66,7 +67,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     'Please sign in to continue ',
                   style: TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.w600
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Aldrich'
                   ),
                 ),
 
@@ -75,14 +77,20 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
 
                 //E-mail TextField
-                TextformField('Email Address', Icon(Icons.email_outlined) , false, emailValidator ,TextInputType.emailAddress ,emailController ),
+
+                TextformField('Email Address', Icon(Icons.email_outlined ,color: Colors.grey,) , false, emailValidator ,TextInputType.emailAddress ,emailController ),
+
+
 
                 SizedBox(
                   height: 30,
                 ),
 
                 //Password TextField
-                TextformField('Password', Icon(Icons.lock_outline) , true , passwordValidator , TextInputType.visiblePassword , passwordController),
+
+                TextformField('Password', Icon(Icons.lock_outline,color: Colors.grey,) , true , passwordValidator , TextInputType.visiblePassword , passwordController),
+
+
 
                 SizedBox(
                   height: 30,
@@ -90,13 +98,16 @@ class _SignInScreenState extends State<SignInScreen> {
 
                 //Sign-In Button
                 InkWell(
-                  splashColor: Colors.cyan,
+
+                  borderRadius: BorderRadius.circular(10),
+
                   onTap: ()async{
                    if(formKey.currentState!.validate())
                      {
                        try {
                          // Show loading modal while the sign-in process is running
-                          ShowModal.showLoadingModal(context);
+                          ShowModal showLoadingModal = ShowModal(title: 'Signing in...');
+                          showLoadingModal.showLoadingModal(context);
                           await signInTask();
                           DataBaseRetrieval dbs =  DataBaseRetrieval();
                           String uid = FirebaseAuth.instance.currentUser!.uid;
@@ -144,7 +155,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           style: TextStyle(
                              color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.w500
+
+                            fontWeight: FontWeight.w500,
+                              fontFamily: 'Aldrich'
+
                           ),
                         ),
                       ),
@@ -164,7 +178,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         'Forgot Password?',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                         color:  Color(0xFF7EC9D4)
+                         color:  Color(0xFF7EC9D4),
+                          fontFamily: 'Aldrich',
+                        fontSize: 12
                       ),
                     ),
                   ),
@@ -175,7 +191,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 Text(
                   "Don't have an account?",
                   style: TextStyle(
-                      fontWeight: FontWeight.w600
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Aldrich',
+                    fontSize: 12
                   ),
                 ),
                 TextButton(
@@ -186,7 +204,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         'Sign Up',
                         style: TextStyle(
                           color: Color(0xFF7EC9D4),
-                          fontWeight: FontWeight.w700
+                          fontWeight: FontWeight.w700,
+                            fontFamily: 'Aldrich',
+                          fontSize: 12
                         ),
                     ),
                 ),

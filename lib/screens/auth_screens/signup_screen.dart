@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.cyan.shade50,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20,60,20,0),
@@ -60,6 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                      style: TextStyle(
                        fontWeight: FontWeight.w700,
                        fontSize: 28,
+                       fontFamily: 'Aldrich',
                      ),
                    ),
                  ),
@@ -73,13 +74,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 15,
+                          fontFamily: 'Roboto'
                       ),
                   ),
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                TextformField('Enter Username', Icon(Icons.account_circle_outlined), false,nameValidator,TextInputType.name,nameController),
+                TextformField('Enter Username', Icon(Icons.account_circle_outlined,color: Colors.grey,), false,nameValidator,TextInputType.name,nameController),
                 SizedBox(
                   height: 20,
                 ),
@@ -90,13 +92,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
+                        fontFamily: 'Roboto'
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                TextformField('Enter Email address', Icon(Icons.email_outlined), false,emailValidator,TextInputType.emailAddress,emailController),
+                TextformField('Enter Email address', Icon(Icons.email_outlined,color: Colors.grey,), false,emailValidator,TextInputType.emailAddress,emailController),
                 SizedBox(
                   height: 20,
                 ),
@@ -107,13 +110,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
+                        fontFamily: 'Roboto'
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                TextformField('Enter Phone number', Icon(Icons.phone), false,mobileValidator,TextInputType.number,phoneNumberController),
+                TextformField('Enter Phone number', Icon(Icons.phone,color: Colors.grey,), false,mobileValidator,TextInputType.number,phoneNumberController),
                 SizedBox(
                   height: 20,
                 ),
@@ -124,13 +128,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
+                        fontFamily: 'Roboto'
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                TextformField('Enter Password', Icon(Icons.password), true,passwordValidator,TextInputType.visiblePassword,passwordController),
+                TextformField('Enter Password', Icon(Icons.password,color: Colors.grey,), true,passwordValidator,TextInputType.visiblePassword,passwordController),
 
                 SizedBox(
                   height: 20,
@@ -154,8 +159,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Text(
                   'Agree to terms & conditions and privacy policy',
                 style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                    fontFamily: 'Aldrich'
                 ),
               ),
             ],
@@ -167,12 +173,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 //Sign-Up Button
                 InkWell(
-                  splashColor: Colors.cyan,
+
+                  borderRadius: BorderRadius.circular(10),
+
                   onTap: ()async{
                     if(formKey.currentState!.validate() && isChecked==true)
                       {
                         try{
-                          ShowModal.showLoadingModal(context);
+                          // ShowModal.showLoadingModal(context);
+                          ShowModal showLoadingModal = ShowModal(title: 'Signing up , Please wait...');
+                          showLoadingModal.showLoadingModal(context);
                           final newUser = await authenticationServices.signUp(emailController.text, passwordController.text);
                           if (newUser != null) {
                             await firestoreServices.saveUser(nameController.text , emailController.text , phoneNumberController.text , FirebaseAuth.instance.currentUser!.uid );
@@ -216,6 +226,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     'Accept Privacy policies & terms',
                                   style: TextStyle(
                                      color: Color(0xFF7EC9D4),
+                                      fontFamily: 'Aldrich'
                                   ),
                                 ),
                             ),
@@ -238,7 +249,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
-                              fontWeight: FontWeight.w500
+
+                              fontWeight: FontWeight.w500,
+                            fontFamily: 'Aldrich'
+
                           ),
                         ),
                       ),
@@ -247,12 +261,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
                 SizedBox(
-                  height: 80,
+                  height: 40,
                 ),
                 Text(
                   "Already have an account?",
                   style: TextStyle(
-                      fontWeight: FontWeight.w600
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Aldrich',
+                    fontSize: 12
                   ),
                 ),
                 TextButton(
@@ -263,7 +279,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     'Sign In',
                     style: TextStyle(
                         color: Color(0xFF7EC9D4),
-                        fontWeight: FontWeight.w700
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Aldrich',
+                      fontSize: 12
                     ),
                   ),
                 ),

@@ -40,15 +40,17 @@ class DashBoardOptionCard extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
+                    fontFamily: 'Aldrich',
                   ),
                 ),
                 const SizedBox(height: 5),
                 Text(
                   subtitle,
                   style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 20,
                     fontWeight: FontWeight.w400,
                     color: Colors.black54,
+                    fontFamily: 'Dongle',
                   ),
                 ),
               ],

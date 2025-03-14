@@ -173,7 +173,8 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey[600],
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Aldrich'
                 ),
               ),
               const SizedBox(height: 5),
@@ -182,7 +183,8 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey[600],
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Aldrich'
                 ),
               ),
               const SizedBox(height: 20),
@@ -196,7 +198,8 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                 child: Text(
                     "Edit Profile",
                   style: TextStyle(
-                    color: Colors.white
+                    color: Colors.white,
+                    fontFamily: 'Aldrich'
                   ),
                 ),
               ),
@@ -206,7 +209,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
               ),
               Container(
                 margin: EdgeInsets.all(30),
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10),
@@ -216,17 +219,19 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                     Text(
                         'No. of Tests Taken : ',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 30,
                             color: Colors.grey[600],
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
+                          fontFamily: 'Dongle'
                         ),
                     ),
                     Text(
                          '$count',
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 30,
                           color: Colors.grey[600],
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
+                        fontFamily: 'Dongle'
                       ),
                     ),
                   ],
@@ -245,7 +250,8 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                 child: Text(
                   "View History",
                   style: TextStyle(
-                      color: Colors.white
+                      color: Colors.white,
+                    fontFamily: 'Aldrich'
                   ),
                 ),
               ),
@@ -270,7 +276,8 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                           "Logout",
                         style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white
+                          color: Colors.white,
+                          fontFamily: 'Aldrich',fontWeight: FontWeight.w700
                         ),
                       ),
                   ),

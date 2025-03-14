@@ -54,6 +54,7 @@ dependencies:
   dio: ^5.4.0
   open_filex: ^4.3.2
   flutter_image_compress: ^2.4.0
+  loading_indicator: ^3.1.1
 
 
 dev_dependencies:
@@ -85,7 +86,6 @@ flutter:
      - assets/images/skincancer.png
      - assets/images/pneumonia.png
      - assets/images/onboarding_assets/
-     - assets/fonts/Roboto-Regular.ttf
      - .env
   #   - images/a_dot_ham.jpeg
 
@@ -100,15 +100,19 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: Aldrich
+       fonts:
+        - asset: assets/fonts/Aldrich-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+     - family: Roboto
+       fonts:
+         - asset: assets/fonts/Roboto-Regular.ttf
+
+     - family: Dongle
+       fonts:
+         - asset: assets/fonts/Dongle-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
