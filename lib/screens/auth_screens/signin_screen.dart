@@ -40,8 +40,8 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan.shade50,
 
+      backgroundColor: Colors.cyan.shade50,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20 ,0 , 20 , 0),
         child: SingleChildScrollView(
@@ -77,14 +77,20 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
 
                 //E-mail TextField
+
                 TextformField('Email Address', Icon(Icons.email_outlined ,color: Colors.grey,) , false, emailValidator ,TextInputType.emailAddress ,emailController ),
+
+
 
                 SizedBox(
                   height: 30,
                 ),
 
                 //Password TextField
+
                 TextformField('Password', Icon(Icons.lock_outline,color: Colors.grey,) , true , passwordValidator , TextInputType.visiblePassword , passwordController),
+
+
 
                 SizedBox(
                   height: 30,
@@ -92,7 +98,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
                 //Sign-In Button
                 InkWell(
+
                   borderRadius: BorderRadius.circular(10),
+
                   onTap: ()async{
                    if(formKey.currentState!.validate())
                      {
@@ -147,8 +155,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           style: TextStyle(
                              color: Colors.white,
                             fontSize: 20,
+
                             fontWeight: FontWeight.w500,
                               fontFamily: 'Aldrich'
+
                           ),
                         ),
                       ),

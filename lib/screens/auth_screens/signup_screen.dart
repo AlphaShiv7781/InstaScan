@@ -173,7 +173,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 //Sign-Up Button
                 InkWell(
+
                   borderRadius: BorderRadius.circular(10),
+
                   onTap: ()async{
                     if(formKey.currentState!.validate() && isChecked==true)
                       {
@@ -247,8 +249,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
+
                               fontWeight: FontWeight.w500,
                             fontFamily: 'Aldrich'
+
                           ),
                         ),
                       ),

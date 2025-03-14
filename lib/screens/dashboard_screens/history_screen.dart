@@ -88,15 +88,19 @@ class HistoryScreen extends StatelessWidget {
                                  '${testType} Assessment',
                                  style: TextStyle(
                                      fontSize: 18,
+
                                      fontWeight: FontWeight.bold,
                                    fontFamily: 'Aldrich'
+
                                  )
                              ),
                              SizedBox(height: 5),
                              Text(patientName , style: TextStyle(
                                  fontSize: 12,
+
                                  fontWeight: FontWeight.w700,
                                  fontFamily: 'Roboto'
+
                              ),
                              ),
                              Text(gender),
