@@ -98,7 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
               InkWell(
                 onTap: (){
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> PneumoniaAssessmentFormScreen()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> PneumoniaAssessmentFormScreen()));
+
                 },
                 splashColor: Colors.cyan,
                 child: DashBoardOptionCard(
