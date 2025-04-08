@@ -152,14 +152,14 @@ class _PneumoniaAssessmentFormScreenState extends State<PneumoniaAssessmentFormS
                 ),
 
                 //contact no.
-                TextformField('Phone Number', Icon(Icons.phone) , false, emailValidator ,TextInputType.phone ,_phoneController ),
+                TextformField('Phone Number', Icon(Icons.phone) , false, mobileValidator,TextInputType.phone ,_phoneController ),
 
                 SizedBox(
                   height: 15,
                 ),
 
                 //age
-                TextformField('Age', Icon(Icons.account_circle) , false, emailValidator ,TextInputType.emailAddress ,_ageController ),
+                TextformField('Age', Icon(Icons.account_circle) , false, emailValidator ,TextInputType.number ,_ageController ),
                 SizedBox(
                   height: 15,
                 ),
