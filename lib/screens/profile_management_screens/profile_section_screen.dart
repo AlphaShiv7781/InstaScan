@@ -11,6 +11,7 @@ import 'package:instascan/constants/userConsts.dart';
 import 'package:instascan/screens/auth_screens/signin_screen.dart';
 import 'package:instascan/screens/dashboard_screens/history_screen.dart';
 import 'package:instascan/screens/profile_management_screens/edit_profile_form.dart';
+import 'package:instascan/screens/profile_management_screens/profile_edit_bottomsheet.dart';
 
 class ProfileSectionScreen extends StatefulWidget {
   const ProfileSectionScreen({super.key});
@@ -93,6 +94,22 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
     }
   }
 
+
+  void _openBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.cyan.shade50,
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (_) => const UserInputBottomSheet(),
+    );
+  }
+
+
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -117,6 +134,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.cyan.shade50,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -190,7 +208,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileEditingForm()));
+                  _openBottomSheet(context);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.cyan),
