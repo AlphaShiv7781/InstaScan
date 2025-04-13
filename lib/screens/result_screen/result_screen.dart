@@ -8,6 +8,7 @@ import 'package:instascan/screens/result_screen/components/result_image_widget.d
 import 'package:instascan/services/auth_services/firestore_services.dart';
 import 'package:instascan/services/pdf_services/pdf_generator.dart';
 import 'package:instascan/services/pdf_services/pdf_retrieval.dart';
+import 'package:instascan/services/pdf_services/report_service/report_api.dart';
 
 class ResultScreen extends StatefulWidget {
    const ResultScreen({super.key, required this.result, required this.patientImage, required this.skinLesionImage, required this.name, required this.phoneNumber, required this.email, required this.age, required this.dob, required this.gender, required this.testType});
@@ -30,6 +31,24 @@ class _ResultScreenState extends State<ResultScreen> {
 
   PDFService pdfService =  PDFService();
   FirestoreServices firestoreServices= FirestoreServices();
+  String riskLevel = '';
+  String description = '';
+  List<String> suggestion = [];
+  String explanation = '';
+
+  Future<void> getReport(String label , double confidence) async {
+    final result = await ReportApiService.reportAnalysisApi(label, confidence);
+
+    if (result != null) {
+      print("Risk Level: ${result['riskLevel']}");
+      riskLevel = result['riskLevel'];
+      description = result['description'];
+      suggestion = (result['suggestions'] as List).map((s) => s.toString()).toList();
+      explanation = result['explanation']['en'];
+    } else {
+      print("Failed to retrieve report.");
+    }
+  }
 
 
   @override
@@ -96,6 +115,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   // ShowModal.showLoadingModal(context);
                   ShowModal showLoadingModal = ShowModal(title: 'Please wait...');
                   showLoadingModal.showLoadingModal(context);
+                  await getReport(widget.testType, double.parse(widget.result.replaceAll('%', '').trim()));
                   String? url = await pdfService.generatePDF(
 
                       patientName: widget.name,
@@ -106,7 +126,11 @@ class _ResultScreenState extends State<ResultScreen> {
                       confidenceScore: widget.result,
                       patientImageFile: widget.patientImage!,
                       reportImageFile: widget.skinLesionImage!,
-                      testType: widget.testType
+                      testType: widget.testType,
+                      riskLevel: riskLevel,
+                      description: description,
+                      suggestion: suggestion,
+                      explanation: explanation
                   );
 
                   if (url == null) {
@@ -137,6 +161,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   // ShowModal.showLoadingModal(context);
                   ShowModal showLoadingModal = ShowModal(title: 'Please wait...');
                   showLoadingModal.showLoadingModal(context);
+                  await getReport(widget.testType, double.parse(widget.result.replaceAll('%', '').trim()));
                   String? url = await pdfService.generatePDF(
 
                       patientName: widget.name,
@@ -147,7 +172,11 @@ class _ResultScreenState extends State<ResultScreen> {
                       confidenceScore: widget.result,
                       patientImageFile: widget.patientImage!,
                       reportImageFile: widget.skinLesionImage!,
-                      testType: widget.testType
+                      testType: widget.testType,
+                      riskLevel: riskLevel,
+                      description: description,
+                      suggestion: suggestion,
+                      explanation: explanation
                   );
 
                   if (url == null) {

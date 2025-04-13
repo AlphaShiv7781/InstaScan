@@ -25,6 +25,7 @@
 //   }
 // }
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -50,7 +51,8 @@ class ShowModal {
                   height: 80,
                   width: 80,
                   child: LoadingIndicator(
-                      indicatorType: Indicator.ballClipRotate,
+                      // indicatorType: Indicator.ballClipRotate,
+                    indicatorType: Indicator.circleStrokeSpin,
                       colors: const [Colors.cyan],
                       strokeWidth: 10,
                       backgroundColor: Colors.transparent,
@@ -58,9 +60,22 @@ class ShowModal {
                   ),
                 ),
                 SizedBox(height: 10),
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,fontFamily: 'Aldrich'),
+                // Text(
+                //   title,
+                //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,fontFamily: 'Aldrich'),
+                // ),
+                AnimatedTextKit(
+                  animatedTexts: [
+
+                    ScaleAnimatedText(
+                      title,
+                      textStyle: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Aldrich',
+                      )
+                    ),
+                  ],
                 ),
               ],
             ),
