@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:instascan/constants/userConsts.dart';
 import 'package:instascan/constants/validator.dart';
 import 'package:instascan/custom_widgets/text_formfield.dart';
 
@@ -18,17 +20,23 @@ class _UserInputBottomSheetState extends State<UserInputBottomSheet> {
   final _phoneController = TextEditingController();
   bool _isSubmitting = false;
 
-  Future<void> _submitData() async {
+  Future<void> _submitData({
+    required String name,
+    required String alternateEmail,
+    required String phoneNo,
+}) async {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() => _isSubmitting = true);
 
     try {
-      await FirebaseFirestore.instance.collection('users').add({
-        'name': _nameController.text.trim(),
-        'email': _alternateEmailController.text.trim(),
-        'phone': _phoneController.text.trim(),
-        'timestamp': FieldValue.serverTimestamp(),
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({
+        'name': name,
+        'alternateEmail': alternateEmail,
+        'phoneNumber': phoneNo,
       });
 
       Navigator.of(context).pop(); // Close the bottom sheet
@@ -74,8 +82,26 @@ class _UserInputBottomSheetState extends State<UserInputBottomSheet> {
                 backgroundColor: Colors.cyan,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               ),
-              // onPressed: _isSubmitting ? null : _submitData,
-              onPressed: (){},
+              onPressed: (){
+                 try{
+
+                   _submitData(
+                     name: _nameController.text,
+                     alternateEmail: _alternateEmailController.text,
+                     phoneNo: _phoneController.text,
+                   );
+
+                   setState(() {
+                     userData?['name'] = _nameController.text;
+                      userData?['phoneNumber'] = _phoneController.text;
+                   });
+
+                 }catch(e){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Error: $e')),
+                    );
+                 }
+              },
               child: _isSubmitting
                   ? const CircularProgressIndicator()
                   : const Text('Submit' ,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold , fontSize: 16),),
