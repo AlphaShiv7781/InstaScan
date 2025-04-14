@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:instascan/constants/userConsts.dart';
 import 'package:instascan/screens/auth_screens/signin_screen.dart';
 import 'package:instascan/screens/dashboard_screens/history_screen.dart';
-import 'package:instascan/screens/profile_management_screens/edit_profile_form.dart';
+import 'package:instascan/screens/profile_management_screens/profile_edit_bottomsheet.dart';
 
 class ProfileSectionScreen extends StatefulWidget {
   const ProfileSectionScreen({super.key});
@@ -93,6 +93,22 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
     }
   }
 
+
+  void _openBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.cyan.shade50,
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (_) => const UserInputBottomSheet(),
+    );
+  }
+
+
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -117,6 +133,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.cyan.shade50,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -171,7 +188,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
               Text(
                 "${userData?['name']}",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 15,
                   color: Colors.grey[600],
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Aldrich'
@@ -181,16 +198,26 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
               Text(
                 "${userData?['email']}",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 15,
                   color: Colors.grey[600],
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Aldrich'
                 ),
               ),
+              const SizedBox(height: 5),
+              Text(
+                "${userData?['phoneNumber']}",
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[600],
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Aldrich'
+                ),
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileEditingForm()));
+                  _openBottomSheet(context);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.cyan),
@@ -204,14 +231,14 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(30.0,30,30.0,0),
+                padding: const EdgeInsets.fromLTRB(30.0,15,30.0,0),
                 child: Divider(),
               ),
               Container(
                 margin: EdgeInsets.all(30),
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.fromLTRB(15,5,5,5),
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Colors.white54,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
@@ -219,7 +246,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                     Text(
                         'No. of Tests Taken : ',
                         style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 28,
                             color: Colors.grey[600],
                             fontWeight: FontWeight.bold,
                           fontFamily: 'Dongle'
@@ -228,7 +255,7 @@ class _ProfileSectionScreenState extends State<ProfileSectionScreen> {
                     Text(
                          '$count',
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 28,
                           color: Colors.grey[600],
                           fontWeight: FontWeight.bold,
                         fontFamily: 'Dongle'

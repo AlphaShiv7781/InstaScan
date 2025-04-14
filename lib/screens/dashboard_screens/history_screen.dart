@@ -7,7 +7,9 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.cyan.shade50,
       appBar: AppBar(
+        backgroundColor: Colors.cyan.shade50,
         automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.fromLTRB(10.0 , 20,10,0),

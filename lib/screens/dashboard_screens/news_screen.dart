@@ -42,7 +42,7 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white54,
+      backgroundColor: Colors.cyan.shade50,
       body: articles.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
